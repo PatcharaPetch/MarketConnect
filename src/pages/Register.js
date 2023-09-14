@@ -1,4 +1,4 @@
-import "./Register.css";
+import "./Register.scoped.css";
 import { Link } from "react-router-dom";
 const Register = () => {
   // const onButtonRegisterContainerClick = useCallback(() => {
