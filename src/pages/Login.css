@@ -26,7 +26,6 @@ input {
   padding: 25px;
   width: 100%;
   height: 67px;
-  margin-bottom: 10px;
   color: var(--color-darkgray);
   font-size: var(--font-size-lg);
   font-family: var(--font-sansation);
@@ -34,6 +33,7 @@ input {
 
 .input {
   position: relative;
+  margin-bottom: 20px;
 }
 
 img {
@@ -56,7 +56,6 @@ a {
   align-items: center;
   text-decoration: none;
   color: white;
-
 }
 
 .marketconnect {
@@ -72,3 +71,4 @@ a {
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
