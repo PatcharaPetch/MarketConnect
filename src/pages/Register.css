@@ -1,0 +1,143 @@
+.div {
+  border-radius: 15px;
+  background-color: var(--color-white);
+  width: 30.63rem;
+  height: 37.06rem;
+}
+.passwordinput {
+  border-radius: var(--br-3xs);
+  background-color: var(--color-gainsboro);
+  width: 25.31rem;
+  height: 4.19rem;
+}
+.icon-lock-locked {
+  position: absolute;
+  height: 47.52%;
+  width: 7.14%;
+  top: 16.42%;
+  right: 8.66%;
+  bottom: 36.06%;
+  left: 84.2%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.confirm-password {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  display: inline-block;
+  width: 12.94rem;
+  height: 1.19rem;
+}
+.button,
+.password {
+  position: absolute;
+  width: 25.31rem;
+  height: 4.19rem;
+}
+.password {
+  top: 17.19rem;
+  left: 2.69rem;
+}
+.button {
+  top: 0;
+  left: 0;
+  border-radius: 30px;
+  background-color: #7895b2;
+}
+.register1 {
+  position: absolute;
+  top: 1.19rem;
+  left: 10rem;
+  display: inline-block;
+  width: 5.69rem;
+  height: 1.81rem;
+}
+.button-register {
+  position: absolute;
+  top: 30.88rem;
+  left: 2.5rem;
+  width: 25.31rem;
+  height: 4.19rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--color-white);
+}
+.icon-person {
+  position: absolute;
+  height: 47.52%;
+  width: 8.43%;
+  top: 25.37%;
+  right: 8.11%;
+  bottom: 27.1%;
+  left: 83.46%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.username1 {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.56rem;
+  display: inline-block;
+  width: 12.94rem;
+  height: 1.19rem;
+}
+.password1,
+.username {
+  position: absolute;
+  top: 7.56rem;
+  left: 2.69rem;
+  width: 25.31rem;
+  height: 4.19rem;
+}
+.password1 {
+  top: 12.38rem;
+}
+.marketconnect,
+.page {
+  position: absolute;
+  
+}
+.page {
+  width: 30.63rem;
+  height: 37.06rem;
+}
+.marketconnect {
+  top: calc(50% - 242.5px);
+  left: calc(50% - 244.5px);
+  font-size: 2.5rem;
+  letter-spacing: 0.22em;
+  line-height: 102.69%;
+  font-weight: 600;
+  font-family: var(--font-saira-extracondensed);
+  color: var(--color-black);
+  text-align: center;
+  display: inline-block;
+}
+.main {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  background-image: url("../../public/image-1@2x.png");
+  background-size: cover;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.main {
+  border: 1px solid var(--color-black);
+  flex-shrink: 0;
+}
+.register {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1.13rem 1.19rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  font-size: var(--font-size-lg);
+  color: var(--color-darkgray);
+  font-family: var(--font-sansation);
+}

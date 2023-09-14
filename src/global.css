@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Sansation:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Saira+ExtraCondensed:wght@600&display=swap");
+body {
+  margin: 0;
+  width: 100vw;
+  min-height: 100vh;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-saira-extracondensed: "Saira ExtraCondensed";
+  --font-sansation: Sansation;
+
+  /* font sizes */
+  --font-size-lg: 1.13rem;
+
+  /* Colors */
+  --color-white: #fff;
+  --color-black: #000;
+  --color-darkgray: #a6a6a6;
+  --color-gainsboro: #e2e2e2;
+
+  /* Border radiuses */
+  --br-3xs: 10px;
+}
