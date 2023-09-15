@@ -1,28 +1,20 @@
 import "./Home.scoped.css";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 const Home = () => {
     return (
         <div className="home">
-            <header>
-                <h1>MarketConnect</h1>
-                <div className="nav-bar">
-                    <NavLink className={({isActive}) => isActive ? "nav-item active" : "nav-item"} to="/">Home <img className="nav-icon" src="/homeicon.png" alt="" /></NavLink>
-                    <NavLink className={({isActive}) => isActive ? "nav-item active" : "nav-item"} to="/food">Food <img className="nav-icon" src="/foodicon.png" alt="" /></NavLink>
-                    <NavLink className={({isActive}) => isActive ? "nav-item active" : "nav-item"} to="/shop">Shop <img className="nav-icon" src="/shopicon.png" alt="" /></NavLink>
-                    <NavLink className={({isActive}) => isActive ? "nav-item active" : "nav-item"} to="/support">Support <img className="nav-icon" src="/supporticon.png" alt="" /></NavLink>
-                    <NavLink className={({isActive}) => isActive ? "nav-item active" : "nav-item"} to="/register">Profile <img className="nav-icon" src="/profileicon.png" alt="" /></NavLink>
-                </div>
-            </header>
+            <NavBar />
             <main>
                 <section id="promotions">
-                    <h3>PROMOTION</h3>
+                    <h1>PROMOTION</h1>
                     <div className="promotion">
                         <PromotionItems />
                     </div>
                 </section>
                 <section id="new">
-                    <h3>NEW ARRIVALS</h3>
+                    <h1>NEW ARRIVALS</h1>
                     <div className="reel">
                         <NewArrivals />
                     </div>
@@ -35,9 +27,9 @@ const Home = () => {
 const PromotionItems = () => {
     return promotion_data.map(item => {
         return (
-            <div className="promotion-item" key={item.id}>
+            <Link className="promotion-item" key={item.id} to={item.link}>
                 <img src={item.image} alt="" />
-            </div>
+            </Link>
         );
     });
 };
@@ -59,6 +51,7 @@ const promotion_data = (() => {
     for (var i = 0; i < 10; i++) {
         items.push({
             id: i,
+            link: "/promotion" + (i + 1),
             image: "https://upload.wikimedia.org/wikipedia/commons/0/09/Dummy_flag.png"
         });
     }
