@@ -1,4 +1,5 @@
 import { useCallback } from "react";
+import { NavLink } from "react-router-dom";
 import "./Profile.scoped.css";
 
 const Profile = () => {
@@ -81,8 +82,10 @@ const Profile = () => {
         <div className="marketconnect">MarketConnect</div>
         <div className="menu">
           <div className="menuitem" onClick={onMenuItemContainerClick}>
-            <img className="icon" alt="" src="/homeicon.png" />
-            <div className="home1">Home</div>
+            <NavLink to="/">
+              <img className="icon" alt="" src="/homeicon.png" />
+              <div className="home1">Home</div>
+            </NavLink>
           </div>
           <div className="menuitem" onClick={onMenuItemContainer1Click}>
             <img className="icon" alt="" src="/foodicon.png" />
