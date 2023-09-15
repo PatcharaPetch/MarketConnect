@@ -6,6 +6,7 @@ header {
     background-color: inherit;
     z-index: 1;
     height: 4rem;
+    min-width: max-content;
 }
 h1 {
     letter-spacing: 0.22em;

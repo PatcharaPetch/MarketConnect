@@ -1,24 +1,7 @@
-import { useCallback } from "react";
-import { NavLink } from "react-router-dom";
+import NavBar from "../components/NavBar";
 import "./Profile.scoped.css";
 
 const Profile = () => {
-  const onMenuItemContainerClick = useCallback(() => {
-    // Please sync "Home" to the project
-  }, []);
-
-  const onMenuItemContainer1Click = useCallback(() => {
-    // Please sync "Food" to the project
-  }, []);
-
-  const onMenuItemContainer2Click = useCallback(() => {
-    // Please sync "Shop" to the project
-  }, []);
-
-  const onMenuItemContainer3Click = useCallback(() => {
-    // Please sync "Support" to the project
-  }, []);
-
   return (
     <div className="profile">
       <div className="footer">
@@ -40,13 +23,11 @@ const Profile = () => {
           <p className="chat">Chat</p>
         </div>
         <div className="address">
-          <p className="home">{`Computer Engineering Student `}</p>
-          <p className="home">&nbsp;</p>
+          <p className="home">Computer Engineering Student</p>
           <p className="home">Email: MarketConnect@gmail.com</p>
           <p className="chat">Call : 0884034307</p>
         </div>
         <div className="contact">
-          <p className="home">&nbsp;</p>
           <p className="home">Twitter : MarketConnect</p>
           <p className="home">Facebook : MarketConnect</p>
           <p className="chat"> Instagram : MarketConnect</p>
@@ -78,35 +59,7 @@ const Profile = () => {
         <input type="text" className="group-child" />
         <div className="save">Save</div>
       </div>
-      <div className="header">
-        <div className="marketconnect">MarketConnect</div>
-        <div className="menu">
-          <div className="menuitem" onClick={onMenuItemContainerClick}>
-            <NavLink to="/">
-              <img className="icon" alt="" src="/homeicon.png" />
-              <div className="home1">Home</div>
-            </NavLink>
-          </div>
-          <div className="menuitem" onClick={onMenuItemContainer1Click}>
-            <img className="icon" alt="" src="/foodicon.png" />
-            <div className="home1"> Food</div>
-          </div>
-          <div className="menuitem" onClick={onMenuItemContainer2Click}>
-            <img className="icon" alt="" src="/shopicon.png" />
-            <div className="home1">Shop</div>
-          </div>
-          <div className="menuitem3" onClick={onMenuItemContainer3Click}>
-            <img className="icon" alt="" src="/supporticon.png" />
-            <div className="support1">Support</div>
-          </div>
-          <div className="menuitem4">
-            <img className="icon" alt="" src="/profileicon.png" />
-            <div className="profile1">
-              <p className="chat"> Profile</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <NavBar />
       <img className="profile-child" alt="" src="/chinjang.png" />
     </div>
   );
