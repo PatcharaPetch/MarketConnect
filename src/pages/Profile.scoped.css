@@ -80,7 +80,8 @@
   left: 119px;
   width: 1231px;
   height: 170px;
-  font-size: var(--font-size-xl);
+  font-size: 18px;
+  font-family: var(--font-saira-extracondensed);
 }
 .edit-profile {
   top: 221px;
@@ -102,9 +103,10 @@
   box-sizing: border-box;
   width: 480.42px;
   height: 85.17px;
+  font-size: 20px;
+  font-family: var(--font-saira-extracondensed);
 }
 .first-name {
-  position: absolute;
   top: 0;
   left: 0;
   font-weight: 600;
@@ -115,6 +117,7 @@
 .email-child,
 .firstname {
   position: absolute;
+  align-items: center;
   top: 1197px;
   left: 204px;
   width: 476.42px;
@@ -235,7 +238,7 @@
   color: var(--color-floralwhite);
 }
 .marketconnect {
-  letter-spacing: 0.22em;
+  letter-spacing: 0.15em;
   line-height: 102.69%;
   font-weight: 600;
   display: inline-block;

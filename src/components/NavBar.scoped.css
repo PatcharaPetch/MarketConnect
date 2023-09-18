@@ -3,10 +3,11 @@ header {
     top: 0;
     display: flex;
     justify-content: space-around;
-    background-color: inherit;
+    background-color: #E2D8CA;
     z-index: 1;
     height: 4rem;
     min-width: max-content;
+    box-shadow: 2px 10px 10px 0px rgba(0, 0, 0, 0.22);
 }
 h1 {
     letter-spacing: 0.22em;

@@ -8,7 +8,7 @@
 .promotion {
     width: 75%;
     height: 75%;
-    background-color: gray;
+    background-color: rgb(115, 112, 112);
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
