@@ -19,6 +19,13 @@ const Home = () => {
                         <NewArrivals />
                     </div>
                 </section>
+                <section id="recommend">
+                    <h1>RECOMMENDED</h1>
+                    <div className="grid_rec">
+                        {/* <Recommended /> */}
+                    </div>
+
+                </section>
             </main>
         </div>
     );
@@ -46,29 +53,71 @@ const NewArrivals = () => {
     });
 };
 
-const promotion_data = (() => {
-    var items = [];
-    for (var i = 0; i < 10; i++) {
-        items.push({
-            id: i,
-            link: "/promotion" + (i + 1),
-            image: "https://upload.wikimedia.org/wikipedia/commons/0/09/Dummy_flag.png"
-        });
-    }
-    return items;
-})();
+const Recommended = () => {
+    return recommended_data.map(item => {
+        return (
+            <div className="rec-item" key={item.id}>
+                <img src={item.image} alt="" />
+                <div className="rec-item-name">{item.name}</div>
+                <div className="rec-item-price">{item.price.toFixed(2)} ฿</div>
+            </div>
+        );
+    });
+};
 
-const newArrivals_data = (() => {
-    var items = [];
-    for (var i = 0; i < 10; i++) {
-        items.push({
-            id: i,
-            name: "Item " + i,
-            price: 100 + i,
-            image: "https://upload.wikimedia.org/wikipedia/commons/0/09/Dummy_flag.png"
-        });
+const promotion_data = [
+    {
+        id: 1,
+        image: "/food5.jpg",
+        link: "/promotion/1"
+    },
+    {
+        id: 2,
+        image: "/food4jpg.jpg",
+        link: "/promotion/2"
+    },
+    {
+        id: 3,
+        image: "/food3.jpg",
+        link: "/promotion/3"
+    },
+    {
+        id: 4,
+        image: "/food1.jpg",
+        link: "/promotion/4"
+    },
+    {
+        id: 5,
+        image: "/food2.jpg",
+        link: "/promotion/5"
     }
-    return items;
-})();
+];
+
+const newArrivals_data = [
+    {
+        id: 1,
+        image: "/food1.jpg",
+        name: "ข้าวผัดกุ้ง",
+        price: 50
+    },
+    {
+        id: 2,
+        image: "/food2.jpg",
+        name: "ข้าวผัดหมู",
+        price: 40
+    },
+    {
+        id: 3,
+        image: "/food3.jpg",
+        name: "ข้าวผัดไก่",
+        price: 40
+    },
+    {
+        id: 4,
+        image: "/food4jpg.jpg",
+        name: "ข้าวผัดปู",
+        price: 50
+    },
+]
 
 export default Home;
