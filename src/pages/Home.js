@@ -4,27 +4,26 @@ import NavBar from "../components/NavBar";
 
 const Home = () => {
     return (
-        <div className="home">
+        <div className="container">
             <NavBar />
             <main>
-                <section id="promotions">
+                <section id="promotions-box">
                     <h1>PROMOTION</h1>
-                    <div className="promotion">
+                    <div className="promotion-box-scroll">
                         <PromotionItems />
                     </div>
                 </section>
-                <section id="new">
+                <section id="new-box">
                     <h1>NEW ARRIVALS</h1>
-                    <div className="reel">
+                    <div className="new-box-scroll">
                         <NewArrivals />
                     </div>
                 </section>
-                <section id="recommend">
+                <section id="rec-box">
                     <h1>RECOMMENDED</h1>
-                    <div className="grid_rec">
-                        {/* <Recommended /> */}
+                    <div className="rec-box-grid">
+                        <Recommended />
                     </div>
-
                 </section>
             </main>
         </div>
@@ -73,7 +72,7 @@ const promotion_data = [
     },
     {
         id: 2,
-        image: "/food4jpg.jpg",
+        image: "/food4.jpg",
         link: "/promotion/2"
     },
     {
@@ -114,10 +113,48 @@ const newArrivals_data = [
     },
     {
         id: 4,
-        image: "/food4jpg.jpg",
+        image: "/food4.jpg",
         name: "ข้าวผัดปู",
         price: 50
     },
 ]
 
+const recommended_data = [
+    {
+        id: 1,
+        image: "/food1.jpg",
+        name: "ข้าวผัดกุ้ง",
+        price: 50
+    },
+    {
+        id: 2,
+        image: "/food2.jpg",
+        name: "ข้าวผัดหมู",
+        price: 40
+    },
+    {
+        id: 3,
+        image: "/food3.jpg",
+        name: "ข้าวผัดไก่",
+        price: 40
+    },
+    {
+        id: 4,
+        image: "/food4.jpg",
+        name: "ข้าวผัดปู",
+        price: 50
+    },
+    {
+        id: 5,
+        image: "/food5.jpg",
+        name: "ข้าวผัดปู",
+        price: 50
+    },
+    {
+        id: 6,
+        image: "/chinjang.png",
+        name: "ข้าวผัดปู",
+        price: 50
+    },
+]
 export default Home;
