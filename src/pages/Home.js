@@ -156,5 +156,6 @@ const recommended_data = [
         name: "ข้าวผัดปู",
         price: 50
     },
+
 ]
 export default Home;
