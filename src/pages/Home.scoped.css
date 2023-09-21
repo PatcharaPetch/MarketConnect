@@ -117,12 +117,11 @@ h1{
     background-color: #efece2;
     border-radius: 1rem;
     box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.25);
-    padding: 10px;
 }
 
 .rec-item img{
     width: 100%;
-    border-radius: 1rem ;
+    border-radius: 1rem 1rem 0 0;
     aspect-ratio: 16/9;
 }
 

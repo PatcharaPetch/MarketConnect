@@ -152,7 +152,7 @@ const recommended_data = [
     },
     {
         id: 6,
-        image: "/chinjang.png",
+        image: "/food1.jpg",
         name: "ข้าวผัดปู",
         price: 50
     },

@@ -74,4 +74,22 @@ a {
 a:hover{
   background-color: #7895b2;
   opacity: 0.7;
+  transition: 0.5s;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .box {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  input {
+    height: 50px;
+    font-size: 16px;
+  }
 }
