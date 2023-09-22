@@ -21,10 +21,11 @@
 
 .title {
   width: 100%;
-  font-size: 2.5rem;
   letter-spacing: 0.2em;
   font-weight: bold;
-  font-family: var(--font-saira-extracondensed);
+  font-family:'Saira Extra Condensed', sans-serif;
+  font-size: 45px;
+  font-style: normal;
   color: black;
   text-align: center;
   margin-top: 40px;
@@ -42,10 +43,19 @@ input {
   padding: 25px;
   margin-bottom: 10px;
   border-radius: 10px;
-  color: rgb(25, 22, 22);
-  background-color: var(--color-gainsboro);
+  border: #E2E2E2;
+  background-color: #E2E2E2;
   font-size: 18px;
-  font-family: var(--font-sansation);
+  font-family: "Sansation", sans-serif;
+}
+
+input::placeholder{
+  color: #A6A6A6;
+  font-family: "Sansation", sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 img {
@@ -65,8 +75,8 @@ a {
   border-radius: 30px;
   color: white;
   background-color: #7895b2;
-  font-size: 20px;
-  font-family: var(--font-sansation);
+  font-size: 24px;
+  font-family: "Sansation", sans-serif;
   text-decoration: none;
 }
 

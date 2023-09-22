@@ -11,8 +11,8 @@ h1{
   width: 100%;
   text-align: center;
   margin-bottom: 2rem;
-  font-family: var(--font-saira-extracondensed);
-  font-weight: bold;
+  font-family:'Roboto', sans-serif;
+  font-weight: 500;
   font-size: 3rem;
 }
 
@@ -47,6 +47,11 @@ form{
   justify-items: center;
 }
 
+form label{
+  font-family:'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
 form input {
   box-sizing: border-box;
   width: 100%;
@@ -54,7 +59,8 @@ form input {
   border-radius: 0.5rem;
   border: 1px solid #ccc;
   font-size: 1rem;
-  font-family: var(--font-saira-extracondensed);
+  font-family:'Roboto', sans-serif;
+  font-weight: 100;
 }
 
 .button{
@@ -70,7 +76,8 @@ form input {
   padding: 0.5rem;
   border-radius: 1rem;
   font-size: 1rem;
-  font-family: var(--font-saira-extracondensed);
+  font-family:'Roboto', sans-serif;
+  font-weight: 400;
 }
 
 .button button:hover{

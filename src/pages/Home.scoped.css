@@ -13,9 +13,10 @@
 }
 
 h1{
-    font-family: var(--font-saira-extracondensed);
-    font-weight: bold;
-    font-size: 32px;
+    font-family:'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    text-transform: uppercase;
 }
 
 .promotion-box-scroll {
@@ -79,15 +80,15 @@ h1{
 
 .new-item-name {
     font-size: 1.3rem;
-    font-family: var(--font-saira-extracondensed);
-    font-weight: bold;
+    font-family:'Roboto', sans-serif;
+    font-weight: 300;
     margin-top: 0.5rem;
 }
 
 .new-item-price {
     font-size: 1.2rem;
-    font-family: var(--font-saira-extracondensed);
-    font-weight: bold;
+    font-family:'Roboto', sans-serif;
+    font-weight: 300;
     margin-top: 0.5rem;
 }
 
@@ -127,15 +128,15 @@ h1{
 
 .rec-item-name{
     font-size: 1.2rem;
-    font-family: var(--font-saira-extracondensed);
-    font-weight: 600;
+    font-family:'Roboto', sans-serif;
+    font-weight: 300;
     margin-top: 0.5rem;
 }
 
 .rec-item-price{
     font-size: 1.1rem;
-    font-family: var(--font-saira-extracondensed);
-    font-weight: 600;
+    font-family:'Roboto', sans-serif;
+    font-weight: 300;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
 }

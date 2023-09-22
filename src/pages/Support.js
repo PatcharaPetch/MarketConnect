@@ -6,9 +6,9 @@ const Support = () => {
         <div className="container">
             <NavBar />
             <div className="main-box">
-                <img src="/chinjang.png" alt="" />
+                <img src="/saitama.png" alt="" />
                 <div className="form-box">
-                    <h1>Support</h1>
+                    <h1>Contact Us</h1>
                     <form action="" method="post">
                         <label htmlFor="name">Name</label>
                         <input type="text" name="name" />
@@ -17,7 +17,7 @@ const Support = () => {
                         <label htmlFor="contact">Contact Number</label>
                         <input type="text" name="contact" />
                         <label htmlFor="message">Message</label>
-                        <input type="text" name="message" />
+                        <textarea name="textarea" id="" cols="50" rows="4"></textarea>
                         <button className="send-button">Send</button>
                     </form>
                 </div>
