@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Support from "./pages/Support";
 import Profile from "./pages/Profile";
+import Food from "./pages/Food";
 
 function App() {
   const action = useNavigationType();
@@ -55,6 +56,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/support" element={<Support />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/food" element={<Food />} />
     </Routes>
   );
 }
