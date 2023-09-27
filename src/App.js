@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import GetTable from "./pages/back-test";
 
 function App() {
   const action = useNavigationType();
@@ -52,6 +53,7 @@ function App() {
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/test" element={<GetTable />} />
     </Routes>
   );
 }
