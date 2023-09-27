@@ -4,12 +4,16 @@ import {
   useNavigationType,
   useLocation,
 } from "react-router-dom";
-import Register from "./pages/Register";
+
 import { useEffect } from "react";
+import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import GetTable from "./pages/back-test";
+import Support from "./pages/Support";
+import Profile from "./pages/Profile";
+import Food from "./pages/Food";
+import FoodDetail from "./pages/FoodDetail";
 
 function App() {
   const action = useNavigationType();
@@ -49,11 +53,15 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Register />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/support" element={<Support />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/test" element={<GetTable />} />
+      <Route path="/food" element={<Food />} />
+      <Route path="/fooddetail" element={<FoodDetail />} />
     </Routes>
   );
 }
