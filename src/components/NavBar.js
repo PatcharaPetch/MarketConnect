@@ -6,9 +6,9 @@ const NavBar = () => {
     
     return (
         <header>
-            <h1>MarketConnect</h1>
+            <div className="logo"><img src="/logo1.png" alt="" /></div>
             <nav className="nav-bar">
-                <NavLink className={nav_class} to="/">Home <NavIcon img="/homeicon.png" /></NavLink>
+                <NavLink className={nav_class} to="/home">Home <NavIcon img="/homeicon.png" /></NavLink>
                 <NavLink className={nav_class} to="/food">Food <NavIcon img="/foodicon.png" /></NavLink>
                 <NavLink className={nav_class} to="/chat">Chat <NavIcon img="/chaticon.png" /></NavLink>
                 <NavLink className={nav_class} to="/support">Support <NavIcon img="/supporticon.png" /></NavLink>

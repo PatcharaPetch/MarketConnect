@@ -12,6 +12,7 @@ import Home from "./pages/Home";
 import Support from "./pages/Support";
 import Profile from "./pages/Profile";
 import Food from "./pages/Food";
+import FoodDetail from "./pages/FoodDetail";
 
 function App() {
   const action = useNavigationType();
@@ -51,12 +52,14 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Register />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/support" element={<Support />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/food" element={<Food />} />
+      <Route path="/fooddetail" element={<FoodDetail />} />
     </Routes>
   );
 }

@@ -1,6 +1,7 @@
 import "./Home.scoped.css";
 import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
+import {PopChat} from "../components/PopChat";
 
 const Home = () => {
     return (
@@ -25,6 +26,7 @@ const Home = () => {
                         <Recommended />
                     </div>
                 </section>
+                <PopChat messages={[]} />
             </main>
         </div>
     );

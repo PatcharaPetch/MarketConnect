@@ -5,11 +5,13 @@
 }
 
 #promotions-box {
-    height: calc(100vh - 4rem);
+    height: calc(100vh - 20rem);
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    padding-top: 5rem;
+
 }
 
 h1{
@@ -18,10 +20,10 @@ h1{
     font-size: 30px;
     text-transform: uppercase;
 }
-
+    
 .promotion-box-scroll {
-    width: 70%;
-    height: 70%;
+    width: 60%;
+    height: 80%;
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
@@ -41,17 +43,18 @@ h1{
 }
 
 #new-box {
-    height: calc(100vh - 10rem);
+    height: calc(100vh - 25rem);
     background-color: #F6F4EB;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    padding-top: 2.5rem;
 }
 
 .new-box-scroll {
     width: 80%;
-    height: 60%;
+    height: 70%;
     display: flex;
     overflow-x: scroll;
     overflow-y: hidden;
@@ -97,17 +100,19 @@ h1{
     background-color: #F6F4EB;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    padding-top: 2rem;
-    padding-bottom: 6rem;
-
+    padding-bottom: 3rem;
 }
 
+#rec-box h1 {
+    margin-bottom: 3rem;
+}
 .rec-box-grid{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
     grid-gap: 3.5rem;
+    
 }
 
 .rec-item{

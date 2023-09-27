@@ -16,7 +16,7 @@ const Login = () => {
             <img src="/-icon-lock-locked.svg" alt="" />
           </div>
         </div>
-      <Link to={"/profile"}>Login</Link>
+      <Link to={"/home"}>Login</Link>
       </div>
     </div>
   );
