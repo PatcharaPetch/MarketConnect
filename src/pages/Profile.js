@@ -9,7 +9,7 @@ const Profile = () => {
       <div className="main">
         <h1>Edit Profile</h1>
         <div className="pic-profile-box">
-          <img src="/chinjang.png" alt="" />
+          <img src="https://anime.atsit.in/th/wp-content/uploads/2022/07/e0b984e0b88be0b895e0b8b2e0b8a1e0b8b0e0b8aae0b8b2e0b8a1e0b8b2e0b8a3e0b896e0b8abe0b8b2e0b8a2e0b983e0b888e0b983e0b899e0b8ade0b8a7e0b881.webp" alt="" />
         </div>
         <div className="form-box">
           <form action="" method="post">

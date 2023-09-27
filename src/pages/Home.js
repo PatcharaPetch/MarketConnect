@@ -45,11 +45,11 @@ const PromotionItems = () => {
 const NewArrivals = () => {
   return newArrivals_data.map((item) => {
     return (
-      <div className="new-item" key={item.id}>
+      <Link className="new-item" key={item.id} to={"/fooddetail"}>
         <img src={item.image} alt="" />
         <div className="new-item-name">{item.name}</div>
         <div className="new-item-price">{item.price.toFixed(2)} ฿</div>
-      </div>
+      </Link>
     );
   });
 };
@@ -57,11 +57,11 @@ const NewArrivals = () => {
 const Recommended = () => {
     return recommended_data.map(item => {
         return (
-            <div className="rec-item" key={item.id}>
+            <Link className="rec-item" key={item.id} to={"/fooddetail"}>
                 <img src={item.image} alt="" />
                 <div className="rec-item-name">{item.name}</div>
                 <div className="rec-item-price">{item.price.toFixed(2)} ฿</div>
-            </div>
+            </Link>
         );
     });
 };
@@ -69,29 +69,35 @@ const Recommended = () => {
 const promotion_data = [
     {
         id: 1,
-        image: "/food5.jpg",
-        link: "/promotion/1"
+        image: "sale0.svg",
+        link: "/fooddetail"
     },
     {
         id: 2,
-        image: "/food4.jpg",
-        link: "/promotion/2"
+        image: "sale4.svg",
+        link: "/fooddetail"
     },
     {
         id: 3,
-        image: "/food3.jpg",
-        link: "/promotion/3"
+        image: "detail1.svg",
+        link: "/fooddetail"
     },
     {
         id: 4,
-        image: "/food1.jpg",
-        link: "/promotion/4"
+        image: "promo1.svg",
+        link: "/fooddetail"
     },
     {
         id: 5,
-        image: "/food2.jpg",
-        link: "/promotion/5"
+        image:"promo2.svg",
+        link: "/fooddetail"
+    },
+    {
+        id: 6,
+        image: "promo3.svg",
+        link: "/fooddetail"
     }
+
 ];
 
 const newArrivals_data = [

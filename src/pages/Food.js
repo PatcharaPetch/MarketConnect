@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import FoodSearchBar from '../components/FoodSearchBar';
 import '../components/FoodSearchBar.scoped.css';
@@ -32,11 +33,11 @@ const Food = () => {
 const FoodItems = ({ foodData }) => {
   return foodData.map((item) => {
     return (
-      <div className="food-item" key={item.id}>
+      <Link className="food-item" key={item.id} to={"/fooddetail"}>
         <img src={item.image} alt="" />
         <div className="food-item-name">{item.name}</div>
         <div className="food-item-price">{item.price.toFixed(2)} ฿</div>
-      </div>
+      </Link>
     );
   });
 };
