@@ -1,6 +1,12 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
+const { createClient } = require('@supabase/supabase-js');
+
+const supabaseUrl = 'https://ooitkismzzkxarjmwdeb.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 const app = express();
 app.use(cors());
@@ -13,8 +19,6 @@ const connection = mysql.createConnection({
   database: "market",
   insecureAuth: true,
 });
-
-connection.connect();
 
 app.get("/", (req, res) => {
   console.log("requested");
@@ -50,6 +54,16 @@ app.get("/profile", (req, res) => {
   console.log("requested");
   connection.query("SELECT * FROM data_user", (err, results, fields) => {
     res.status(200).json(results);
+  });
+});
+
+app.get("/supabase", (req, res) => {
+  supabase.from("countries").select().then(({ data, error }) => {
+    if (error) {
+      res.status(500).json({ error });
+    } else {
+      res.status(200).json(data);
+    }
   });
 });
 
