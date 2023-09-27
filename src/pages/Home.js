@@ -33,25 +33,25 @@ const Home = () => {
 };
 
 const PromotionItems = () => {
-    return promotion_data.map(item => {
-        return (
-            <Link className="promotion-item" key={item.id} to={item.link}>
-                <img src={item.image} alt="" />
-            </Link>
-        );
-    });
+  return promotion_data.map((item) => {
+    return (
+      <Link className="promotion-item" key={item.id} to={item.link}>
+        <img src={item.image} alt="" />
+      </Link>
+    );
+  });
 };
 
 const NewArrivals = () => {
-    return newArrivals_data.map(item => {
-        return (
-            <div className="new-item" key={item.id}>
-                <img src={item.image} alt="" />
-                <div className="new-item-name">{item.name}</div>
-                <div className="new-item-price">{item.price.toFixed(2)} ฿</div>
-            </div>
-        );
-    });
+  return newArrivals_data.map((item) => {
+    return (
+      <div className="new-item" key={item.id}>
+        <img src={item.image} alt="" />
+        <div className="new-item-name">{item.name}</div>
+        <div className="new-item-price">{item.price.toFixed(2)} ฿</div>
+      </div>
+    );
+  });
 };
 
 const Recommended = () => {
