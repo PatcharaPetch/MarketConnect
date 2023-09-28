@@ -8,7 +8,7 @@ const Login = () => {
         <div>
           <div className="title">MarketConnect</div>
           <div className="input-box">
-            <input type="text" name="username" id="username" placeholder="Username" />
+            <input type="email" name="Email" id="email" placeholder="Email" required />
             <img src="/-icon-person.svg" alt="" />
           </div>
           <div className="input-box">
@@ -16,7 +16,10 @@ const Login = () => {
             <img src="/-icon-lock-locked.svg" alt="" />
           </div>
         </div>
-      <Link to={"/home"}>Login</Link>
+      <div className="footer">
+        <label htmlFor=""><Link to={"/register"}>Don't have Account? Register here!</Link></label>
+        <div className="botton-login"><Link to={"/home"}>Login</Link></div>
+      </div>
       </div>
     </div>
   );

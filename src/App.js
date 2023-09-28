@@ -15,6 +15,8 @@ import Profile from "./pages/Profile";
 import Food from "./pages/Food";
 import FoodDetail from "./pages/FoodDetail";
 import AddProduct from "./pages/AddProduct";
+import Verify from "./pages/Verify";
+
 
 function App() {
   const action = useNavigationType();
@@ -54,7 +56,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Register />} />
+      <Route path="/" element={<Login />} />
       <Route path="/home" element={<Home />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
@@ -63,7 +65,9 @@ function App() {
       <Route path="/test" element={<GetTable />} />
       <Route path="/food" element={<Food />} />
       <Route path="/fooddetail" element={<FoodDetail />} />
+      <Route path="/fooddetail/*" element={<FoodDetail />} />
       <Route path="/addproduct" element={<AddProduct />} />
+      <Route path="/verify" element={<Verify />} />
     </Routes>
   );
 }

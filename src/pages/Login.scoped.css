@@ -66,7 +66,7 @@ img {
   height: 32px;
 }
 
-a {
+.botton-login a {
   width: 100%;
   height: 67px;
   display: flex;
@@ -80,10 +80,30 @@ a {
   text-decoration: none;
 }
 
-a:hover{
+.botton-login a:hover{
   background-color: #7895b2;
   opacity: 0.7;
   transition: 0.5s;
+}
+
+label {
+  text-align: center;
+  line-height: normal;
+  padding-bottom: 1.2rem;
+}
+
+label a{
+  color: rgb(72, 72, 185);
+  text-decoration: underline;
+  font-size: 18px;
+  font-family: "Sansation", sans-serif;
+  font-weight: 400;
+}
+
+.footer{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
 }
 
 @media (max-width: 768px) {

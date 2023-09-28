@@ -104,26 +104,26 @@ const newArrivals_data = [
     {
         id: 1,
         image: "/food1.jpg",
-        name: "ข้าวผัดกุ้ง",
-        price: 50
+        name: "เครื่องเทศที่ตำน๊านนาน",
+        price: 500
     },
     {
         id: 2,
         image: "/food2.jpg",
-        name: "ข้าวผัดหมู",
-        price: 40
+        name: "สเต๊กหมูพ่นไฟ",
+        price: 425
     },
     {
         id: 3,
         image: "/food3.jpg",
-        name: "ข้าวผัดไก่",
-        price: 40
+        name: "เฟรนฟรายแถมแฮมเบอร์เกอร์",
+        price: 300
     },
     {
         id: 4,
         image: "/food4.jpg",
-        name: "ข้าวผัดปู",
-        price: 50
+        name: "สเต๊กปลาส้มน้อย",
+        price: 100
     },
 ]
 
@@ -131,38 +131,38 @@ const recommended_data = [
     {
         id: 1,
         image: "/food1.jpg",
-        name: "ข้าวผัดกุ้ง",
-        price: 50
+        name: "เครื่องเทศที่ตำน๊านนาน",
+        price: 500
     },
     {
         id: 2,
         image: "/food2.jpg",
-        name: "ข้าวผัดหมู",
-        price: 40
+        name: "สเต๊กหมูพ่นไฟ",
+        price: 425
     },
     {
         id: 3,
         image: "/food3.jpg",
-        name: "ข้าวผัดไก่",
-        price: 40
+        name: "เฟรนฟรายแถมแฮมเบอร์เกอร์",
+        price: 300
     },
     {
         id: 4,
         image: "/food4.jpg",
-        name: "ข้าวผัดปู",
-        price: 50
+        name: "สเต๊กปลาส้มน้อย",
+        price: 100
     },
     {
         id: 5,
         image: "/food5.jpg",
-        name: "ข้าวผัดปู",
-        price: 50
+        name: "เค้กบาร์สลีปปี้",
+        price: 150
     },
     {
         id: 6,
         image: "/food1.jpg",
-        name: "ข้าวผัดปู",
-        price: 50
+        name: "เครื่องเทศที่ตำน๊านนาน Version 2",
+        price: 600
     },
 
 ]
