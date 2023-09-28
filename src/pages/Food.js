@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import FoodSearchBar from '../components/FoodSearchBar';
 import '../components/FoodSearchBar.scoped.css';
 import './Food.scoped.css';
+import {PopChat} from "../components/PopChat";
 
 const Food = () => {
   const [filteredFood, setFilteredFood] = useState(food_data);
@@ -18,6 +19,7 @@ const Food = () => {
   return (
     <div className="container">
       <NavBar />
+      <PopChat messages={[]} />
       <main>
         <section id="food-box">
           <FoodSearchBar onSearch={handleSearch} />

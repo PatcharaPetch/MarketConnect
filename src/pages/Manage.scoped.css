@@ -1,0 +1,133 @@
+*{
+    box-sizing: border-box;
+}
+.container{
+    max-width: 100vw;
+    min-height: 100vh;
+    background-color: #F6F4EB;
+}
+
+h1{
+    text-align: center;
+    padding-top: 3rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+.add-box{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 4rem;
+}
+
+.add-product{
+    width: 20%;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #ccc;
+    background-color: #F6F4EB;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 26px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.add-product:hover{
+    background-color: #e1d6a3;
+    transition: 0.5s;
+}
+
+.edit-box{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 10rem;
+    padding-right: 10rem;
+
+}
+
+.edit-box-left{
+    width: 60%;
+    border: 1px solid #ccc;
+    border-radius: 2rem;
+    padding: 5rem;
+    margin-right: 5rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    font-size: 24px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+.edit-box-left:hover{
+    background-color: #ccc;
+    transition: 0.5s;
+}
+
+.edit-box-right{
+    width: 40%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.edit-product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    padding: 0.7rem;
+    margin-right: 2rem;
+    border-radius: 1rem;
+    border: 1px solid #ccc;
+    background-color: #F6F4EB;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.edit-product:hover{
+    background-color: #e1d6a3;
+    transition: 0.5s;
+}
+
+.edit-product img{
+    width: 2rem;
+    margin-left: 1rem;
+}
+
+.delete-product{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    border: 1px solid #ccc;
+    background-color: #F6F4EB;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.delete-product:hover{
+    background-color: #f14242;
+    transition: 0.5s;
+}
+
+.delete-product img{
+    width: 2rem;
+    margin-left: 1rem;
+}

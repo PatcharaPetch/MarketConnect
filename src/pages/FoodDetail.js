@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './FoodDetail.scoped.css';
 import NavBar from "../components/NavBar";
+import {PopChat} from "../components/PopChat";
 
 const FoodDetail = () => {
   const [imgId, setImgId] = useState(1);
@@ -32,6 +33,7 @@ const FoodDetail = () => {
   return (
     <div className="container">
     <NavBar /> 
+    <PopChat messages={[]} />
     <div className="container-box">
       <div className="box">
         {/* card left */}

@@ -16,6 +16,7 @@ import Food from "./pages/Food";
 import FoodDetail from "./pages/FoodDetail";
 import AddProduct from "./pages/AddProduct";
 import Verify from "./pages/Verify";
+import Manage from "./pages/Manage";
 
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
       <Route path="/fooddetail/*" element={<FoodDetail />} />
       <Route path="/addproduct" element={<AddProduct />} />
       <Route path="/verify" element={<Verify />} />
+      <Route path="/manage" element={<Manage />} />
     </Routes>
   );
 }

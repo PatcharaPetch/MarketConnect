@@ -24,27 +24,46 @@ const handleSend = e => {
 
   return (
     <div id='chatCon'>
-      <div class="chat-box" style={chatopen ? show : hide}>
-    <div class="header">Chat</div>
-    <div class="msg-area">
+      <div className="chat-box" style={chatopen ? show : hide}>
+    <div className="header">Chat</div>
+    <div className="msg-area">
+      <div className='box1'>
+        <img src="people.png" alt="" />
+        <div className='text1'>ไงเพื่อน เมื่อคืนได้นอนกี่โมง ?</div>
+      </div>
+      <div className='box2'>
+        <div className='text2'>เมื่อคืนไม่ได้นอนเลยเพื่อน</div>
+      </div>
+      <div className='box3'>
+        <img src="people.png" alt="" />
+        <div className='text3'>อ้าว เขียนเว็ปเสร็จแล้วหนิ ทำไมไม่นอน</div>
+      </div>
+      <div className='box4'>
+        <div className='text4'>นั่งทำหน้า Chat นี่ไงเพื่อน มาช่วยกูไหม</div>
+      </div>
+      <div className='box5'>
+        <img src="people.png" alt="" />
+        <label htmlFor="">markmin Leave Chat</label>
+      </div>
+      
       
       {
         messages.map((msg, i) => (
           i%2 ? (
-          <p class="right"><span>{ msg }</span></p>
+          <p className="right"><span>{ msg }</span></p>
           ) : (
-            <p class="left"><span>{ msg }</span></p>
+            <p className="left"><span>{ msg }</span></p>
           )
         ))
       }
 
     </div>
-    <div class="footer">
+    <div className="footer">
       <input type="text"  ref={textRef} />
       <button onClick={handleSend} >Send</button>
     </div>
   </div>
-    <div class="pop">
+    <div className="pop">
       <p><img onClick={toggle} src="/chat6.png" alt="" /></p>
     </div>
     </div>

@@ -39,6 +39,7 @@ h1{
     box-shadow: 0 0 0.5rem 0.25rem rgba(0, 0, 0, 0.25);
     text-decoration: none;
     color: #12263a;
+    background-color: #F0F0F0;
 }
 
 .food-item img{

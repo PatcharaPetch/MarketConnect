@@ -1,10 +1,12 @@
 import NavBar from "../components/NavBar";
 import "./Support.scoped.css";
+import {PopChat} from "../components/PopChat";
 
 const Support = () => {
     return (
         <div className="container">
             <NavBar />
+            <PopChat messages={[]} />
             <div className="main-box">
                 <img src="/saitama.png" alt="" />
                 <div className="form-box">

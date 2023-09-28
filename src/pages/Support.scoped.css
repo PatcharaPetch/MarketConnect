@@ -79,6 +79,7 @@ button{
     background-color: #F6F4EB;
     color: #000;
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 button:hover{

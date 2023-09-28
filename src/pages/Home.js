@@ -21,7 +21,7 @@ const Home = () => {
                     </div>
                 </section>
                 <section id="rec-box">
-                    <h1>RECOMMENDED</h1>
+                    <h1>RANDOM FOOD</h1>
                     <div className="rec-box-grid">
                         <Recommended />
                     </div>
