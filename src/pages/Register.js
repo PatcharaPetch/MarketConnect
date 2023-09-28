@@ -1,10 +1,17 @@
 import "./Register.scoped.css";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
+  const nevigate = useNavigate();
+  const handleRegister = (event) => {
+    event.preventDefault();
+    nevigate("/verify");
+  }
+
   return (
     <div className="container">
-      <form className="box" action="" method="Post">
+      <form className="box" onSubmit={handleRegister} >
         <div>
           <div className="title">MarketConnect</div>
           <div className="input-box">
@@ -19,7 +26,7 @@ const Register = () => {
             <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password" />
             <img src="/-icon-lock-locked.svg" alt="" /></div>
         </div>
-        <Link to={"/verify"}>Register</Link>
+        <button type="submit">Register</button>
       </form>
     </div>
   );

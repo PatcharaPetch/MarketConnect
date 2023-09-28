@@ -78,6 +78,7 @@ img {
   font-size: 24px;
   font-family: "Sansation", sans-serif;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .botton-login a:hover{
