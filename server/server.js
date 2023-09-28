@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
     .select()
     .then(({ data, error }) => {
       if (error) {
-        res.status(500).json({ error });
+        res.status(400).json({ error });
       } else {
         res.status(200).json(data);
       }
@@ -31,7 +31,7 @@ app.post("/register", async (req, res) => {
     password: password,
   });
   if (error) {
-    res.status(500).json({ error });
+    res.status(400).json({ error });
   } else {
     res.status(200).json(data);
   }
@@ -46,7 +46,7 @@ app.post("/support", async (req, res) => {
     Message: message,
   });
   if (error) {
-    res.status(500).json({ error });
+    res.status(400).json({ error });
   } else {
     res.status(200).json(data);
   }
@@ -61,7 +61,7 @@ app.post("/support", async (req, res) => {
 //     }
 //   );
 //   if (error) {
-//     res.status(500).json({ error });
+//     res.status(400).json({ error });
 //   }else {
 //     res.status(200).json(data);
 //   }
@@ -71,7 +71,20 @@ app.post("/fooddetail/:id", async (req, res) => {
   const { email, password } = req.body;
   const { data, error } = await supabase.select("food").select();
   if (error) {
-    res.status(500).json({ error });
+    res.status(400).json({ error });
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.post("/verify", async (req, res) => {
+  const { data, error } = await supabase.auth.verifyOtp({
+    email,
+    token,
+    type: "email",
+  });
+  if (error) {
+    res.status(400).json({ error });
   } else {
     res.status(200).json(data);
   }
@@ -84,7 +97,7 @@ app.post("/login", async (req, res) => {
     password: password,
   });
   if (error) {
-    res.status(500).json({ error });
+    res.status(400).json({ error });
   } else {
     res.status(200).json(data);
   }
@@ -93,7 +106,7 @@ app.post("/login", async (req, res) => {
 app.get("/profile", async (req, res) => {
   const { data, error } = await supabase.auth.getUser();
   if (error) {
-    res.status(500).json({ error });
+    res.status(400).json({ error });
   } else {
     res.status(200).json(data);
   }
@@ -105,7 +118,7 @@ app.get("/supabase", (req, res) => {
     .select()
     .then(({ data, error }) => {
       if (error) {
-        res.status(500).json({ error });
+        res.status(400).json({ error });
       } else {
         res.status(200).json(data);
       }
