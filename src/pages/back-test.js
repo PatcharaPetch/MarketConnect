@@ -13,7 +13,7 @@ const DataShow = () => {
   var [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://10.70.5.21:3200").then((res) => {
+    axios.get("http://localhost:3200").then((res) => {
       console.log(res);
       setData(res);
     });
