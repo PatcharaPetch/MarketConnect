@@ -9,6 +9,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 const port = 3200;
 
 app.get("/", (req, res) => {
@@ -78,6 +79,7 @@ app.post("/fooddetail/:id", async (req, res) => {
 });
 
 app.post("/verify", async (req, res) => {
+  const { email, token } = req.body;
   const { data, error } = await supabase.auth.verifyOtp({
     email,
     token,

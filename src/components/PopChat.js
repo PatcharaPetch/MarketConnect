@@ -1,26 +1,25 @@
-import React, { useState } from 'react'
-import './PopChat.scoped.css'
+import React, { useState } from "react";
+import "./PopChat.scoped.css";
 
-
-export const PopChat = ( props ) => {
+export const PopChat = (props) => {
   let hide = {
-    display: 'none',
-  }
+    display: "none",
+  };
   let show = {
-    display: 'block'
-  }
-  let textRef = React.createRef()
-  const {messages} = props
+    display: "block",
+  };
+  let textRef = React.createRef();
+  const { messages } = props;
 
-  const [chatopen, setChatopen] = useState(false)
-  const toggle = e => {
-    setChatopen(!chatopen)
-  }
+  const [chatopen, setChatopen] = useState(false);
+  const toggle = (e) => {
+    setChatopen(!chatopen);
+  };
 
-const handleSend = e => {
-  const get = props.getMessage
-  get(textRef.current.value)
-}
+  const handleSend = (e) => {
+    const get = props.getMessage;
+    get(textRef.current.value);
+  };
 
   return (
     <div id='chatCon'>
