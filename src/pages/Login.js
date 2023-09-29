@@ -49,9 +49,7 @@ const Login = () => {
           <label htmlFor="">
             <Link to={"/register"}>Don't have Account? Register here!</Link>
           </label>
-          <div className="botton-login">
-            <button type="submit">Login</button>
-          </div>
+          <button type="submit">Login</button>
         </div>
       </form>
     </div>
