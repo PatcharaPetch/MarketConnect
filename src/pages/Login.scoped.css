@@ -66,27 +66,6 @@ img {
   height: 32px;
 }
 
-.botton-login a {
-  width: 100%;
-  height: 67px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 30px;
-  color: white;
-  background-color: #7895b2;
-  font-size: 24px;
-  font-family: "Sansation", sans-serif;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.botton-login a:hover{
-  background-color: #7895b2;
-  opacity: 0.7;
-  transition: 0.5s;
-}
-
 label {
   text-align: center;
   line-height: normal;
@@ -105,6 +84,28 @@ label a{
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+button {
+  width: 100%;
+  height: 67px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  background-color: #7895b2;
+  font-size: 24px;
+  font-family: "Sansation", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #7895b2;
+  opacity: 0.7;
+  transition: 0.5s;
 }
 
 @media (max-width: 768px) {
