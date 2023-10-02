@@ -5,6 +5,13 @@ import NavBar from "../components/NavBar";
 import {PopChat} from "../components/PopChat";
 
 const Manage = () => {
+    const handleDelete = () => {
+        const confirmDelete = window.confirm('คุณต้องการลบข้อมูลนี้ใช่หรือไม่?');
+        if (confirmDelete) {
+            // ลบข้อมูล
+        }
+    }
+     
     return (
         <div className="container">
             <NavBar />
@@ -14,7 +21,7 @@ const Manage = () => {
                 <Link to="/addproduct" className="add-product">Add Product</Link>
             </div>
             <div className="edit-box">
-                <div className='edit-box-left'>Edit Product1</div>
+                <div className='edit-box-left'>Product</div>
                 <div className='edit-box-right'>
                     <Link to="/editproduct" className="edit-product">Edit
                         <img src="editicon.png" alt="" />
