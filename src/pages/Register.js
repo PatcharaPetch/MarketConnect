@@ -1,13 +1,13 @@
 import axios from "axios";
 import "./Register.scoped.css";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
   const handleRegister = (event) => {
     event.preventDefault();
-    if (event.target[1].value !== event.target[2].value) return alert("ERR");
+    if (event.target[1].value !== event.target[2].value)
+      return alert("Password and comfrim Password does not match.");
     axios
       .post("http://localhost:3200/register", {
         email: event.target[0].value,
@@ -21,7 +21,7 @@ const Register = () => {
         });
       })
       .catch((err) => {
-        alert(err);
+        alert("This email has been use.");
       });
   };
 
