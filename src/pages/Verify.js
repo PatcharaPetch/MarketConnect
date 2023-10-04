@@ -15,7 +15,7 @@ function Verify() {
         token: otp.join(""),
       })
       .then((res) => {
-        navigate("/home");
+        navigate("/login");
       })
       .catch((err) => {
         alert(err);
