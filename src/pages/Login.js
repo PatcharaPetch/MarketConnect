@@ -1,23 +1,25 @@
-import axios from "axios";
+// import axios from "axios";
 import "./Login.scoped.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext, useSupabase } from "../App";
 
 const Login = () => {
+  const supabase = useSupabase();
   const navigate = useNavigate();
+  const { session } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (session) navigate("/home");
+  }, [session]);
+
   const handleLogin = (event) => {
     event.preventDefault();
-    axios
-      .post("http://localhost:3200/login", {
-        email: event.target[0].value,
-        password: event.target[1].value,
-      })
-      .then((res) => {
-        navigate("/home");
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    supabase.auth.signInWithPassword({
+      email: event.target[0].value,
+      password: event.target[1].value,
+    });
   };
 
   return (
