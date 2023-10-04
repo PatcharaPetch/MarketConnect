@@ -2,6 +2,7 @@
     max-width: 100vw;
     min-height: 100vh;
     background-color: #F6F4EB;
+
   }
 
 h2{
@@ -19,15 +20,17 @@ h2{
   
 .left-container,
 .right-container {
+
     width: 50%;
     padding: 20px;
     height: 100vh;
+    overflow-y: auto;
 }
   
 .left-container {
     border-right: 1px solid #ccc;
 }
-  
+
 .history-table {
     width: 100%;
     border-collapse: collapse;
@@ -54,7 +57,13 @@ h2{
     font-size: 1rem;
 }
 
-  
+.problem-text{
+    max-width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+    color: #333;
+}
   
 label {
     display: block;

@@ -18,6 +18,7 @@ import AddProduct from "./pages/AddProduct";
 import Verify from "./pages/Verify";
 import Manage from "./pages/Manage";
 import Admin from "./pages/Admin";
+import Chatpage from "./pages/Chatpage";
 
 
 function App() {
@@ -72,6 +73,7 @@ function App() {
       <Route path="/verify" element={<Verify />} />
       <Route path="/manage" element={<Manage />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/chatpage" element={<Chatpage />} />
     </Routes>
   );
 }
