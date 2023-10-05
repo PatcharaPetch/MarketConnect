@@ -12,11 +12,12 @@ const AddProduct = () => {
   const { user } = useContext(AuthContext);
   const handleProduct = (event) => {
     event.preventDefault();
-    // console.log(event.target[3].value);
+    const cata = event.target[2].value;
     axios
       .post("http://localhost:3200/addproduct", {
         name: event.target[0].value,
         price: event.target[1].value,
+        catagory_id: cata,
         id: user.id,
         description: event.target[4].value,
       })
@@ -29,7 +30,7 @@ const AddProduct = () => {
         // console.log(food_id);
         const { error } = supabase.storage
           .from("Picture_Food")
-          .upload("64" + ".png", event.target[3].files[0], {
+          .upload("67" + ".png", event.target[3].files[0], {
             contentType: "image/png",
             upsert: true,
           });

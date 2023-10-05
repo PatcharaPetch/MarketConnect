@@ -4,11 +4,14 @@ import "./FoodDetail.scoped.css";
 import NavBar from "../components/NavBar";
 import { PopChat } from "../components/PopChat";
 import axios from "axios";
+import { useSupabase } from "../App";
 
 const FoodDetail = () => {
+  const supabase = useSupabase();
   const [imgId, setImgId] = useState(1);
   const { foodid } = useParams();
   const [food, setFood] = useState({});
+  const [img, setImg] = useState();
   useEffect(() => {
     axios
       .post("http://localhost:3200/fooddetail", {
@@ -20,6 +23,13 @@ const FoodDetail = () => {
       .catch((err) => {
         alert(err);
       });
+    const {
+      data: { publicUrl },
+    } = supabase.storage.from("Picture_Food").getPublicUrl(foodid + ".png");
+    if (publicUrl) {
+      const timestamp = Date.now().toString();
+      setImg(publicUrl + `?timestamp=${timestamp}`);
+    }
   }, []);
 
   useEffect(() => {
@@ -60,35 +70,43 @@ const FoodDetail = () => {
           <div className="img-box">
             <div className="img-display">
               <div className="img-showcase">
-                <img src="detail1.svg" alt="" />
+                <img src={img} alt="" />
               </div>
             </div>
           </div>
           {/* card right */}
           <div className="product-content">
-            <h2 className="product-title"> data.Food_Name </h2>
+            <h2 className="product-title">
+              <p>{food.Food_Name ?? "-"}</p>
+            </h2>
             <div className="product-price">
               <p className="last-price">
-                Price: <span>data.Price ฿</span>
+                Price: <p>{food.Price ?? "-"}</p>
               </p>
             </div>
+            {/* <h3>FirstName</h3>
+            <p>{user?.user_metadata?.firstname ?? "-"}</p>
+            <h3>Lastname</h3>
+            <p>{user?.user_metadata?.lastname ?? "-"}</p>
+            <h3>Contact Number</h3>
+            <p>{user?.user_metadata?.contact ?? "-"}</p> */}
 
             <div className="product-detail">
               <h2>About Food: </h2>
-              <p>data.Description</p>
+              <p>{food.Description ?? "-"}</p>
               <ul>
-                {/* <li>
-                  Category: <span>Japanese Food</span>
-                </li> */}
                 <li>
-                  Name: <span>data.Fisrtname data.Lastname</span>
+                  Category: <p>{food.Catagory?.catagory_name ?? "-"}</p>
                 </li>
                 <li>
-                  Contact: <span>data.Contact</span>
+                  Name:{" "}
+                  <p>
+                    {food.User?.firstname ?? "-"} {food.User?.lastname ?? "-"}
+                  </p>
                 </li>
-                {/* <li>
-                  Shipping Fee: <span>Free</span>
-                </li> */}
+                <li>
+                  Contact: <p>{food.User?.contact ?? "-"}</p>
+                </li>
               </ul>
             </div>
           </div>
