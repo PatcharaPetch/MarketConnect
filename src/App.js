@@ -105,7 +105,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/food" element={<Food />} />
         <Route path="/fooddetail" element={<FoodDetail />} />
-        <Route path="/fooddetail/*" element={<FoodDetail />} />
+        <Route path="/fooddetail/:foodid" element={<FoodDetail />} />
         <Route path="/verify" element={<Verify />} />
         <Route element={<GuardedRoute />}>
           <Route path="/addproduct" element={<AddProduct />} />

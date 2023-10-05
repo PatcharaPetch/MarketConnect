@@ -53,6 +53,7 @@ const EditProfile = (props) => {
         id: user?.id,
       })
       .then((res) => {
+        alert("Update profile success");
         supabase.auth.refreshSession();
         editCallback();
       })

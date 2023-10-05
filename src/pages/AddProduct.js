@@ -35,6 +35,7 @@ const AddProduct = () => {
         if (error) {
           console.log(error);
         }
+        alert("Add food success.");
         navigate("/manage");
       })
       .catch((err) => {

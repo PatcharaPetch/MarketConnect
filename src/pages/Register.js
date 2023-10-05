@@ -7,7 +7,7 @@ const Register = () => {
   const handleRegister = (event) => {
     event.preventDefault();
     if (event.target[1].value !== event.target[2].value)
-      return alert("Password and Comfrim Password does not match.");
+      return alert("Password and comfrim Password does not match.");
     axios
       .post("http://localhost:3200/register", {
         email: event.target[0].value,
@@ -21,7 +21,7 @@ const Register = () => {
         });
       })
       .catch((err) => {
-        alert(err);
+        alert("This email has been use.");
       });
   };
 
