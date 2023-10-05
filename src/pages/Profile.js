@@ -62,7 +62,11 @@ const EditProfile = (props) => {
       });
   };
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="Loading">
+                <div className="loader"></div>
+                <p>Loading...</p>
+          </div>
+    ;
   } else if (edit)
     return (
       <div className="form-box">
@@ -93,18 +97,18 @@ const EditProfile = (props) => {
   else
     return (
       <div>
-        <div className="form-box">
+        <div className="form-box-2">
           <div className="pic-profile-box">
             <img src={img} alt="" />
           </div>
-          <div>
+          <div className="text-profile-box">
             <h3>FirstName</h3>
             <p>{user?.user_metadata?.firstname ?? "-"}</p>
             <h3>Lastname</h3>
             <p>{user?.user_metadata?.lastname ?? "-"}</p>
             <h3>Contact Number</h3>
             <p>{user?.user_metadata?.contact ?? "-"}</p>
-            <div className="button">
+            <div className="button-2">
               <button className="save-button" onClick={editCallback}>
                 Edit Profile
               </button>

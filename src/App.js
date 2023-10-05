@@ -17,6 +17,8 @@ import AddProduct from "./pages/AddProduct";
 import Verify from "./pages/Verify";
 import Manage from "./pages/Manage";
 import GuardedRoute from "./components/GuardedRoute";
+import Admin from "./pages/Admin";
+import Chatpage from "./pages/Chatpage";
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = "https://ooitkismzzkxarjmwdeb.supabase.co";
@@ -112,6 +114,8 @@ function App() {
           <Route path="/support" element={<Support />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/manage" element={<Manage />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/chatpage" element={<Chatpage />} />
         </Route>
       </Routes>
     </AuthContext.Provider>

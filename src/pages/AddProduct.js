@@ -12,23 +12,24 @@ const AddProduct = () => {
   const { user } = useContext(AuthContext);
   const handleProduct = (event) => {
     event.preventDefault();
+    // console.log(event.target[3].value);
     axios
       .post("http://localhost:3200/addproduct", {
         name: event.target[0].value,
         price: event.target[1].value,
         id: user.id,
-        description: event.target[3].value,
+        description: event.target[4].value,
       })
       .then((res) => {
-        const { food_id } = supabase
-          .from("Food")
-          .select("id", { head: true })
-          .order("id", { ascending: false })
-          .limit(1);
-        console.log(food_id);
+        // const { food_id } = supabase
+        //   .from("Food")
+        //   .select("id", { head: true })
+        //   .order("id", { ascending: false })
+        //   .limit(1);
+        // console.log(food_id);
         const { error } = supabase.storage
           .from("Picture_Food")
-          .upload(food_id + ".png", event.target[2].files[0], {
+          .upload("64" + ".png", event.target[3].files[0], {
             contentType: "image/png",
             upsert: true,
           });
@@ -53,6 +54,15 @@ const AddProduct = () => {
         <input type="text" />
         <label htmlFor="productprice">Price</label>
         <input type="text" />
+        <label htmlFor="category">Category</label>
+        <select name="category" id="category">
+          <option value="1">Thai-Food</option>
+          <option value="2">Japan-Food</option>
+          <option value="3">Korean-Food</option>
+          <option value="4">Italian-Food</option>
+          <option value="5">Drinks</option>
+          <option value="6">Sweets and Desserts</option>
+        </select>
         <label htmlFor="productimage">Image</label>
         <input type="file" multiple />
         <label htmlFor="productdescription">Description</label>

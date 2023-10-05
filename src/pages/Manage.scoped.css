@@ -120,6 +120,7 @@ h1{
     text-align: center;
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 .delete-product:hover{

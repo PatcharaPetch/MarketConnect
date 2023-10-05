@@ -1,92 +1,146 @@
-.container{
+.container {
     max-width: 100vw;
     min-height: 100vh;
     background-color: #F6F4EB;
-}
 
-.main-box{
-    padding: 6rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
+  }
 
-img{
-    width: 30%;
-    border-radius: 1rem ;
-    margin-bottom: 1rem;
-}
-
-.form-box{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
-
-h1{
-    text-align: center;
+h2{
     margin-bottom: 2rem;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 5rem;
+    font-weight: 600;
+    font-size: 2.5rem;
+    text-align: center;
 }
 
-form{
-    width: 100%;
+.support-container {
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: left;
-    font-size: 18px;
-    align-items: center;
-    justify-items: center;
+    justify-content: space-between;
+}
+  
+.left-container,
+.right-container {
+
+    width: 50%;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+}
+  
+.left-container {
+    border-right: 1px solid #ccc;
 }
 
-form label{
+.history-table {
     width: 100%;
-    text-align: left;
-    font-family:'Roboto', sans-serif;
-    font-weight: 300;
-    font-size: 1rem;
-}
-
-form input,textarea {
-    box-sizing: border-box;
-    width: 100%;
-    padding: 0.7rem;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    font-family:'Roboto', sans-serif;
-    font-weight: 200;
-}
-
-label,input{
-    margin-bottom: 0.5rem;
-}
-
-button{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.7rem;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-family:'Roboto', sans-serif;
-    font-weight: 400;
-    background-color: #F6F4EB;
-    color: #000;
+    border-collapse: collapse;
     margin-top: 1rem;
-    cursor: pointer;
+}
+  
+.history-table th,
+.history-table td {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    text-align: left;
+    background-color: #f8f8f8;
+}
+  
+.history-table th {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
-button:hover{
-    background-color: #e1d6a3;
-    transition: 0.3s;
+.history-table td {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
 }
 
-textarea{
+.problem-text{
+    max-width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+    color: #333;
+}
+  
+label {
+    display: block;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    padding-left: 1rem;
+}
+  
+textarea {
+    width: 90%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
     resize: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 1rem;
+
+}
+.button-box{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 0.5rem;
+    padding-right: 4rem;
+}
+button {
+    width: 25%;
+    background-color: #f8f8f8;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    font-family:'Roboto', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    border: 1px solid #ccc;
+}
+  
+button:hover {
+    background-color: #e1d6a3;
+    transition: 0.5s;
+}
+
+.unsend-button {
+  width: 100%;
+  font-size: 14px; /* ปรับขนาดปุ่ม "Unsend" เป็นเล็กลง */
+  padding: 5px 10px; /* ปรับขนาดและระยะห่างของปุ่ม "Unsend" */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+    background-color: transparent;
+}
+
+.unsend-button:hover {
+  background-color: #cc0000; /* ปรับสีเมื่อนำเมาส์ชี้ไปที่ปุ่ม "Unsend" */
+}
+
+
+/* ปรับขนาดของ th และ td ของ "Unsend" */
+.history-table th:last-child,
+.history-table td:last-child {
+  width: 100px; /* ปรับขนาดของ th และ td ของ "Unsend" ตามที่คุณต้องการ */
+}
+
+/* ปรับความยาวของ th และ td ของ "Problem" */
+.history-table th:first-child,
+.history-table td:first-child {
+  width: 300px; /* ปรับความยาวของ th และ td ของ "Problem" ตามที่คุณต้องการ */
+}
+
+span{
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    color: #333;
+    width: auto;
 }

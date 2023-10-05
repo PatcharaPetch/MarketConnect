@@ -5,7 +5,7 @@
 }
 
 .main{
-  padding: 3rem;
+  padding: 2rem;
 }
 h1{
   width: 100%;
@@ -16,18 +16,7 @@ h1{
   font-size: 3rem;
 }
 
-.pic-profile-box{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-img{
-  width: 30%;
-  border-radius: 1rem ;
-  margin-bottom: 1rem;
-}
 
 .form-box{
   width: 100%;
@@ -86,4 +75,111 @@ form input {
   transition: 0.5s;
 }
 
+.form-box-2{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  font-family:'Roboto', sans-serif;
+}
 
+.text-profile-box{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.pic-profile-box{
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.button-2{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.button-2 .save-button{
+  width: 10%;
+  padding: 1rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-family:'Roboto', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.button-2 .save-button:hover{
+  background-color: #e1d6a3;
+  transition: 0.5s;
+}
+
+p{
+  width: 30%;
+  font-family:'Roboto', sans-serif;
+  font-weight: 200;
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  border: #ccc 1px solid;
+}
+
+.Loading p {
+  border: none;
+}
+.Loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; 
+}
+
+.loader {
+  border: 4px solid #f3f3f3; 
+  border-top: 4px solid #3498db; 
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; 
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.Loading p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #333; 
+}
