@@ -15,9 +15,6 @@ const NavBar = () => {
         <img src="/logonav.svg" alt="" />
       </NavLink>
       <nav className="nav-bar">
-        <NavLink className={nav_class} onClick={Sign_Out}>
-          Logout
-        </NavLink>
         <NavLink className={nav_class} to="/home">
           Home <NavIcon img="/homeicon.png" />
         </NavLink>
@@ -32,6 +29,9 @@ const NavBar = () => {
         </NavLink>
         <NavLink className={nav_class} to="/profile">
           Profile <NavIcon img="/profileicon.png" />
+        </NavLink>
+        <NavLink className="nav_copy" onClick={Sign_Out}>
+          Logout <NavIcon img="/logouticon.png" />
         </NavLink>
       </nav>
     </header>

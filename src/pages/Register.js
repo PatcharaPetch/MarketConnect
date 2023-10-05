@@ -1,11 +1,14 @@
 import axios from "axios";
 import "./Register.scoped.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Register = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const handleRegister = (event) => {
     event.preventDefault();
+    setIsLoading(true);
     if (event.target[1].value !== event.target[2].value)
       return alert("Password and comfrim Password does not match.");
     axios
@@ -14,20 +17,29 @@ const Register = () => {
         password: event.target[1].value,
       })
       .then((res) => {
-        navigate("/verify", {
-          state: {
-            email: event.target[0].value,
-          },
-        });
+        if (res.status !== 200) {
+          alert("Email is already used.");
+          console.error(res);
+          setIsLoading(false);
+          return;
+        }
+        console.log(res);
+        // navigate("/verify", {
+        //   state: {
+        //     email: event.target[0].value,
+        //   },
+        // });
       })
       .catch((err) => {
-        alert("This email has been use.");
+        alert("There is an error. Please try again.");
+        console.error(err);
+        setIsLoading(false);
       });
   };
 
   return (
     <div className="container">
-      <form className="box" onSubmit={handleRegister}>
+      <form action="" className="box" onSubmit={handleRegister}>
         <div>
           <div className="title">MarketConnect</div>
           <div className="input-box">
@@ -59,7 +71,7 @@ const Register = () => {
             <img src="/-icon-lock-locked.svg" alt="" />
           </div>
         </div>
-        <button type="submit">Register</button>
+        <button disabled={isLoading} type="submit">Register</button>
       </form>
     </div>
   );

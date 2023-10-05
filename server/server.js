@@ -10,7 +10,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
 
 const port = 3200;
 
@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/register", async (req, res) => {
+  console.log(req.body);
   const { email, password } = req.body;
   const { data, error } = await supabase.auth.signUp({
     email: email,
@@ -112,17 +113,17 @@ app.post("/save", async (req, res) => {
 
 app.post("/delete", async (req, res) => {
   const { user } = req.body;
-  const shopkeeper = supabase
-    .from("Food")
-    .select("Shopkeeper_Id,users!inner(Shopkeerer_Id)")
-    .eq("User_Info.id", user);
+  // const shopkeeper = supabase
+  //   .from("Food")
+  //   .select("Shopkeeper_Id,users!inner(Shopkeerer_Id)")
+  //   .eq("User_Info.id", user);
   const { data, error } = await supabase
     .from("Food")
     .delete()
-    .eq("id_user", shopkeeper);
+    .eq("id", "64");
   const { error2 } = await supabase.storage
     .from("Picture_Food")
-    .remove(food_id + ".png");
+    .remove("64" + ".png");
   if (error || error2) {
     res.status(400).json(error || error2);
   } else {
@@ -139,7 +140,7 @@ app.post("/addproduct", async (req, res) => {
   //   .single();
   // console.log(top);
   const { data, error } = await supabase.from("Food").insert({
-    id: "62",
+    id: "64",
     Food_Name: name,
     Price: price,
     Shopkeeper_Id: id,

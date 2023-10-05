@@ -6,29 +6,29 @@ import {PopChat} from "../components/PopChat";
 const FoodDetail = () => {
   const [imgId, setImgId] = useState(1);
 
-  useEffect(() => {
-    const imgBtns = document.querySelectorAll('.img-select a');
-    const imgBtnArray = Array.from(imgBtns);
-    imgBtnArray.forEach((imgItem) => {
-      imgItem.addEventListener('click', (event) => {
-        event.preventDefault();
-        setImgId(parseInt(imgItem.dataset.id));
-      });
-    });
+  // useEffect(() => {
+  //   const imgBtns = document.querySelectorAll('.img-select a');
+  //   const imgBtnArray = Array.from(imgBtns);
+  //   imgBtnArray.forEach((imgItem) => {
+  //     imgItem.addEventListener('click', (event) => {
+  //       event.preventDefault();
+  //       setImgId(parseInt(imgItem.dataset.id));
+  //     });
+  //   });
 
-    const slideImage = () => {
-      const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
-      document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
-    };
+  //   const slideImage = () => {
+  //     const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
+  //     document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+  //   };
 
-    window.addEventListener('resize', slideImage);
+  //   window.addEventListener('resize', slideImage);
 
-    slideImage();
+  //   slideImage();
 
-    return () => {
-      window.removeEventListener('resize', slideImage);
-    };
-  }, [imgId]);
+  //   return () => {
+  //     window.removeEventListener('resize', slideImage);
+  //   };
+  // }, [imgId]);
 
   return (
     <div className="container">
@@ -41,12 +41,12 @@ const FoodDetail = () => {
           <div className="img-display">
             <div className="img-showcase">
               <img src="detail1.svg" alt="" />
-              <img src="detail2.svg" alt="" />
+              {/* <img src="detail2.svg" alt="" />
               <img src="detail3.svg" alt="" />
-              <img src="detail4.svg" alt="" />
+              <img src="detail4.svg" alt="" /> */}
             </div>
           </div>
-          <div className="img-select">
+          {/* <div className="img-select">
             <div className="img-item">
               <a href="#" data-id="1">
                 <img src="detail1.svg" alt=""/>
@@ -67,7 +67,7 @@ const FoodDetail = () => {
                 <img src="detail4.svg" alt=""/>
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
         {/* card right */}
         <div className="product-content">
