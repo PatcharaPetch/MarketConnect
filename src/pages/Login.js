@@ -16,10 +16,13 @@ const Login = () => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    supabase.auth.signInWithPassword({
+    const { data, error } = supabase.auth.signInWithPassword({
       email: event.target[0].value,
       password: event.target[1].value,
     });
+    if (error) {
+      alert("Email or password does not collect.");
+    }
   };
 
   return (

@@ -71,7 +71,9 @@ const Register = () => {
             <img src="/-icon-lock-locked.svg" alt="" />
           </div>
         </div>
-        <button disabled={isLoading} type="submit">Register</button>
+        <button disabled={isLoading} type="submit">
+          Register
+        </button>
       </form>
     </div>
   );

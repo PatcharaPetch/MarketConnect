@@ -10,7 +10,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const app = express();
 app.use(cors());
-app.use(express.json({limit: '50mb'}));
+app.use(express.json({ limit: "50mb" }));
 
 const port = 3200;
 
@@ -56,9 +56,12 @@ app.post("/support", async (req, res) => {
   }
 });
 
-app.post("/fooddetail/:id", async (req, res) => {
-  const { email, password } = req.body;
-  const { data, error } = await supabase.select("food").select();
+app.post("/fooddetail", async (req, res) => {
+  const { foodid } = req.body;
+  const { data, error } = await supabase
+    .from("Food")
+    .select("Food_Name, Price, Description, User(firstname,lastname,contact)")
+    .eq("id", foodid);
   if (error) {
     res.status(400).json(error);
   } else {
@@ -140,7 +143,7 @@ app.post("/addproduct", async (req, res) => {
   //   .single();
   // console.log(top);
   const { data, error } = await supabase.from("Food").insert({
-    id: "64",
+    // id: "62",
     Food_Name: name,
     Price: price,
     Shopkeeper_Id: id,
