@@ -60,7 +60,9 @@ app.post("/fooddetail", async (req, res) => {
   const { foodid } = req.body;
   const { data, error } = await supabase
     .from("Food")
-    .select("Food_Name, Price, Description, User(firstname,lastname,contact)")
+    .select(
+      "Food_Name, Price, Description, User(firstname,lastname,contact), Catagory(catagory_name)"
+    )
     .eq("id", foodid);
   if (error) {
     res.status(400).json(error);
@@ -135,16 +137,17 @@ app.post("/delete", async (req, res) => {
 });
 
 app.post("/addproduct", async (req, res) => {
-  const { name, price, id, description } = req.body;
+  const { name, price, catagory_id, id, description } = req.body;
   // const { top, error5 } = supabase
   //   .from("Food")
   //   .select("id", { head: true })
   //   .limit(1)
   //   .single();
-  // console.log(top);
+  console.log(catagory_id);
   const { data, error } = await supabase.from("Food").insert({
-    // id: "62",
+    id: "70",
     Food_Name: name,
+    Catagory_Id: catagory_id,
     Price: price,
     Shopkeeper_Id: id,
     Description: description,
