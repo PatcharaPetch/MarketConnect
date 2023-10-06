@@ -77,35 +77,28 @@ const FoodDetail = () => {
           {/* card right */}
           <div className="product-content">
             <h2 className="product-title">
-              <p>{food.Food_Name ?? "-"}</p>
+              <p>{food?.Food_Name ?? "-"}</p>
             </h2>
             <div className="product-price">
               <p className="last-price">
-                Price: <p>{food.Price ?? "-"}</p>
+                Price: <p>{food?.Price ?? "-"}</p>
               </p>
             </div>
-            {/* <h3>FirstName</h3>
-            <p>{user?.user_metadata?.firstname ?? "-"}</p>
-            <h3>Lastname</h3>
-            <p>{user?.user_metadata?.lastname ?? "-"}</p>
-            <h3>Contact Number</h3>
-            <p>{user?.user_metadata?.contact ?? "-"}</p> */}
-
             <div className="product-detail">
               <h2>About Food: </h2>
-              <p>{food.Description ?? "-"}</p>
+              <p>{food?.Description ?? "-"}</p>
               <ul>
                 <li>
-                  Category: <p>{food.Catagory?.catagory_name ?? "-"}</p>
+                  Category: <p>{food?.Catagory?.catagory_name ?? "-"}</p>
                 </li>
                 <li>
                   Name:{" "}
                   <p>
-                    {food.User?.firstname ?? "-"} {food.User?.lastname ?? "-"}
+                    {food?.User?.firstname ?? "-"} {food?.User?.lastname ?? "-"}
                   </p>
                 </li>
                 <li>
-                  Contact: <p>{food.User?.contact ?? "-"}</p>
+                  Contact: <p>{food?.User?.contact ?? "-"}</p>
                 </li>
               </ul>
             </div>

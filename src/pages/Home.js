@@ -57,7 +57,7 @@ const NewArrivals = () => {
 const Recommended = () => {
   return recommended_data.map((item) => {
     return (
-      <Link className="rec-item" key={item.id} to={"/fooddetail"}>
+      <Link className="rec-item" key={item.id} to={"/fooddetail/67"}>
         <img src={item.image} alt="" />
         <div className="rec-item-name">{item.name}</div>
         <div className="rec-item-price">{item.price.toFixed(2)} ฿</div>

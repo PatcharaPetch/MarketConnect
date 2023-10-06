@@ -11,7 +11,9 @@ const Login = () => {
   const { session } = useContext(AuthContext);
 
   useEffect(() => {
-    if (session) navigate("/home");
+    if (session) {
+      navigate("/home");
+    }
   }, [session]);
 
   const handleLogin = (event) => {
@@ -21,7 +23,7 @@ const Login = () => {
       password: event.target[1].value,
     });
     if (error) {
-      alert("Email or password does not collect.");
+      alert("Email or password does not correct.");
     }
   };
 

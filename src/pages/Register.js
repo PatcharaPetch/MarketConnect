@@ -24,11 +24,11 @@ const Register = () => {
           return;
         }
         console.log(res);
-        // navigate("/verify", {
-        //   state: {
-        //     email: event.target[0].value,
-        //   },
-        // });
+        navigate("/verify", {
+          state: {
+            email: event.target[0].value,
+          },
+        });
       })
       .catch((err) => {
         alert("There is an error. Please try again.");
