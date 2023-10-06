@@ -12,10 +12,10 @@ function Chatpage() {
   const [selectedContact, setSelectedContact] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-
+  
   useEffect(() => {
-    // สร้างการเชื่อมต่อ WebSocket ไปยังเซิร์ฟเวอร์ WebSocket ของคุณ
-    const socket = io('http://localhost:3000/chatpage'); // แทนที่ YOUR_WEBSOCKET_SERVER_URL ด้วย URL ของเซิร์ฟเวอร์ WebSocket
+    // สร้างการเชื่อมต่อ WebSocket ไปยังเซิร์ฟเวอร์ WebSocket 
+    const socket = io('http://localhost:3000/chatpage'); 
     setSocket(socket);
     if (socket.connected) {
         setSocket(socket);

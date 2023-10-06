@@ -37,7 +37,7 @@ function Admin() {
 
   return (
     <div className="admin-container">
-      <h2>Administrator Hua Kuy</h2>
+      <h2>Administrator</h2>
       <table>
         <thead>
           <tr>
