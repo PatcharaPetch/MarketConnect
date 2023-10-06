@@ -14,21 +14,7 @@ app.use(express.json({ limit: "50mb" }));
 
 const port = 3200;
 
-app.get("/", (req, res) => {
-  supabase
-    .from("countries")
-    .select()
-    .then(({ data, error }) => {
-      if (error) {
-        res.status(400).json(error);
-      } else {
-        res.status(200).json(data);
-      }
-    });
-});
-
 app.post("/register", async (req, res) => {
-  console.log(req.body);
   const { email, password } = req.body;
   const { data, error } = await supabase.auth.signUp({
     email: email,
@@ -59,6 +45,20 @@ app.post("/support", async (req, res) => {
 app.post("/fooddetail", async (req, res) => {
   const { foodid } = req.body;
   const { data, error } = await supabase
+    .from("Food")
+    .select(
+      "Food_Name, Price, Description, User(firstname,lastname,contact), Catagory(catagory_name)"
+    )
+    .eq("id", foodid);
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.get("/fooddetail", (req, res) => {
+  const { data, error } = supabase
     .from("Food")
     .select(
       "Food_Name, Price, Description, User(firstname,lastname,contact), Catagory(catagory_name)"

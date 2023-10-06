@@ -84,13 +84,6 @@ const FoodDetail = () => {
                 Price: <p>{food?.Price ?? "-"}</p>
               </p>
             </div>
-            {/* <h3>FirstName</h3>
-            <p>{user?.user_metadata?.firstname ?? "-"}</p>
-            <h3>Lastname</h3>
-            <p>{user?.user_metadata?.lastname ?? "-"}</p>
-            <h3>Contact Number</h3>
-            <p>{user?.user_metadata?.contact ?? "-"}</p> */}
-
             <div className="product-detail">
               <h2>About Food: </h2>
               <p>{food?.Description ?? "-"}</p>
