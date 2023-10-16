@@ -1,4 +1,6 @@
 import "./Home.scoped.css";
+import { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { PopChat } from "../components/PopChat";
@@ -23,7 +25,7 @@ const Home = () => {
         <section id="rec-box">
           <h1>RANDOM FOOD</h1>
           <div className="rec-box-grid">
-            <Recommended />
+            <Random />
           </div>
         </section>
         <PopChat messages={[]} />
@@ -35,28 +37,49 @@ const Home = () => {
 const PromotionItems = () => {
   return promotion_data.map((item) => {
     return (
-      <Link className="promotion-item" key={item.id} to={item.link}>
+      <div className="promotion-item" key={item.id} to={item.link}>
         <img src={item.image} alt="" />
-      </Link>
+      </div>
     );
   });
 };
 
 const NewArrivals = () => {
-  const promotion_data = axios.get();
-  return newArrivals_data.map((item) => {
+  const [food, setFood] = useState([]);
+  useEffect(() => {
+    axios
+      .post("http://localhost:3200/new")
+      .then((res) => {
+        setFood(res.data);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }, []);
+  return food.map((item) => {
     return (
       <Link className="new-item" key={item.id} to={"/fooddetail/" + item.id}>
-        <img src={item.image} alt="" />
-        <div className="new-item-name">{item.name}</div>
-        <div className="new-item-price">{item.price.toFixed(2)} ฿</div>
+        <img src={item.URL} alt="" />
+        <div className="new-item-name">{item.Food_Name}</div>
+        <div className="new-item-price">{item.Price?.toFixed(2)} ฿</div>
       </Link>
     );
   });
 };
 
-const Recommended = () => {
-  return recommended_data.map((item) => {
+const Random = () => {
+  const [ranFood, setFood] = useState([]);
+  useEffect(() => {
+    axios
+      .post("http://localhost:3200/food")
+      .then((res) => {
+        setFood(res.data);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }, []);
+  return random_data.map((item) => {
     return (
       <Link className="rec-item" key={item.id} to={"/fooddetail/" + item.id}>
         <img src={item.image} alt="" />
@@ -100,34 +123,7 @@ const promotion_data = [
   },
 ];
 
-const newArrivals_data = [
-  {
-    id: 1,
-    image: "/food1.jpg",
-    name: "เครื่องเทศที่ตำน๊านนาน",
-    price: 500,
-  },
-  {
-    id: 2,
-    image: "/food2.jpg",
-    name: "สเต๊กหมูพ่นไฟ",
-    price: 425,
-  },
-  {
-    id: 3,
-    image: "/food3.jpg",
-    name: "เฟรนฟรายแถมแฮมเบอร์เกอร์",
-    price: 300,
-  },
-  {
-    id: 4,
-    image: "/food4.jpg",
-    name: "สเต๊กปลาส้มน้อย",
-    price: 100,
-  },
-];
-
-const recommended_data = [
+const random_data = [
   {
     id: 67,
     image: "/food1.jpg",

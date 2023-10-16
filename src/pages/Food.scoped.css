@@ -23,10 +23,11 @@ h1{
 }
 
 .food-box-grid{
+    width: 70%;
     padding-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
-    grid-gap: 3.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 2fr));
+    grid-gap: 3rem;
 }
 
 .food-item{
@@ -46,6 +47,7 @@ h1{
     width: 100%;
     border-radius: 1rem 1rem 0 0;
     aspect-ratio: 16/9;
+    object-fit: cover;
 }
 
 .food-item-name{

@@ -7,6 +7,8 @@ import axios from "axios";
 import { AuthContext, useSupabase } from "../App";
 
 const AddProduct = () => {
+  const [file, setFile] = useState("");
+  const [isUploading, setIsUploading] = useState(false);
   const supabase = useSupabase();
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -20,29 +22,37 @@ const AddProduct = () => {
         catagory_id: cata,
         id: user.id,
         description: event.target[4].value,
+        picture: file,
       })
       .then((res) => {
-        // const { food_id } = supabase
-        //   .from("Food")
-        //   .select("id", { head: true })
-        //   .order("id", { ascending: false })
-        //   .limit(1);
-        // console.log(food_id);
-        const { error } = supabase.storage
-          .from("Picture_Food")
-          .upload("67" + ".png", event.target[3].files[0], {
-            contentType: "image/png",
-            upsert: true,
-          });
-        if (error) {
-          console.log(error);
-        }
         alert("Add food success.");
         navigate("/manage");
       })
       .catch((err) => {
         alert(err);
       });
+  };
+
+  const upload_File = async (event) => {
+    setIsUploading(true);
+    const filename = Math.random()
+      .toString(36)
+      .slice(2);
+    const { error } = await supabase.storage
+      .from("Picture_Food")
+      .upload(filename + ".png", event.target.files[0], {
+        contentType: "image/png",
+        upsert: true,
+      });
+    if (error) {
+      setIsUploading(false);
+      return alert(error);
+    }
+    const { data } = supabase.storage
+      .from("Picture_Food")
+      .getPublicUrl(filename + ".png");
+    setFile(data.publicUrl);
+    setIsUploading(false);
   };
 
   return (
@@ -65,10 +75,10 @@ const AddProduct = () => {
           <option value="6">Sweets and Desserts</option>
         </select>
         <label htmlFor="productimage">Image</label>
-        <input type="file" multiple />
+        <input onChange={upload_File} type="file" />
         <label htmlFor="productdescription">Description</label>
         <textarea name="" id="" cols="70" rows="7" />
-        <button type="submit" className="send-button">
+        <button disabled={isUploading} type="submit" className="send-button">
           Done
         </button>
       </form>

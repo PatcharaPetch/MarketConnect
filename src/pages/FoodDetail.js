@@ -23,13 +23,13 @@ const FoodDetail = () => {
       .catch((err) => {
         alert(err);
       });
-    const {
-      data: { publicUrl },
-    } = supabase.storage.from("Picture_Food").getPublicUrl(foodid + ".png");
-    if (publicUrl) {
-      const timestamp = Date.now().toString();
-      setImg(publicUrl + `?timestamp=${timestamp}`);
-    }
+    // const {
+    //   data: { publicUrl },
+    // } = supabase.storage.from("Picture_Food").getPublicUrl(foodid + ".png");
+    // if (publicUrl) {
+    //   const timestamp = Date.now().toString();
+    //   setImg(publicUrl + `?timestamp=${timestamp}`);
+    // }
   }, []);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const FoodDetail = () => {
           <div className="img-box">
             <div className="img-display">
               <div className="img-showcase">
-                <img src={img} alt="" />
+                <img src={food?.URL} alt="" />
               </div>
             </div>
           </div>
