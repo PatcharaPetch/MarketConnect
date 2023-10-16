@@ -8,10 +8,10 @@ import { useSupabase } from "../App";
 
 const FoodDetail = () => {
   const supabase = useSupabase();
-  const [imgId, setImgId] = useState(1);
   const { foodid } = useParams();
   const [food, setFood] = useState({});
   const [img, setImg] = useState();
+  1;
   useEffect(() => {
     axios
       .post("http://localhost:3200/fooddetail", {
@@ -35,31 +35,6 @@ const FoodDetail = () => {
   useEffect(() => {
     console.log(food);
   }, [food]);
-
-  // useEffect(() => {
-  //   const imgBtns = document.querySelectorAll('.img-select a');
-  //   const imgBtnArray = Array.from(imgBtns);
-  //   imgBtnArray.forEach((imgItem) => {
-  //     imgItem.addEventListener('click', (event) => {
-  //       event.preventDefault();
-  //       setImgId(parseInt(imgItem.dataset.id));
-  //     });
-  //   });
-
-  //   const slideImage = () => {
-  //     const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
-  //     document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
-  //   };
-
-  //   window.addEventListener('resize', slideImage);
-
-  //   slideImage();
-
-  //   return () => {
-  //     window.removeEventListener('resize', slideImage);
-  //   };
-  // }, [imgId]);
-
   return (
     <div className="container">
       <NavBar />

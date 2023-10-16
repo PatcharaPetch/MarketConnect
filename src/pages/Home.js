@@ -43,9 +43,10 @@ const PromotionItems = () => {
 };
 
 const NewArrivals = () => {
+  const promotion_data = axios.get();
   return newArrivals_data.map((item) => {
     return (
-      <Link className="new-item" key={item.id} to={"/fooddetail"}>
+      <Link className="new-item" key={item.id} to={"/fooddetail/" + item.id}>
         <img src={item.image} alt="" />
         <div className="new-item-name">{item.name}</div>
         <div className="new-item-price">{item.price.toFixed(2)} ฿</div>
@@ -57,7 +58,7 @@ const NewArrivals = () => {
 const Recommended = () => {
   return recommended_data.map((item) => {
     return (
-      <Link className="rec-item" key={item.id} to={"/fooddetail/67"}>
+      <Link className="rec-item" key={item.id} to={"/fooddetail/" + item.id}>
         <img src={item.image} alt="" />
         <div className="rec-item-name">{item.name}</div>
         <div className="rec-item-price">{item.price.toFixed(2)} ฿</div>
@@ -128,7 +129,7 @@ const newArrivals_data = [
 
 const recommended_data = [
   {
-    id: 1,
+    id: 67,
     image: "/food1.jpg",
     name: "เครื่องเทศที่ตำน๊านนาน",
     price: 500,

@@ -57,20 +57,6 @@ app.post("/fooddetail", async (req, res) => {
   }
 });
 
-app.get("/fooddetail", (req, res) => {
-  const { data, error } = supabase
-    .from("Food")
-    .select(
-      "Food_Name, Price, Description, User(firstname,lastname,contact), Catagory(catagory_name)"
-    )
-    .eq("id", foodid);
-  if (error) {
-    res.status(400).json(error);
-  } else {
-    res.status(200).json(data);
-  }
-});
-
 app.post("/verify", async (req, res) => {
   const { email, token } = req.body;
   const { data, error } = await supabase.auth.verifyOtp({
