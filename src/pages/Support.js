@@ -32,15 +32,15 @@ function Support() {
   };
   // โหลดข้อมูลประวัติเมื่อหน้า Support โหลด
   useEffect(() => {
-    // const storedHistory = localStorage.getItem('supportHistory');
-    // if (storedHistory) {
-    //   setHistory(JSON.parse(storedHistory));
-    // }
+    const storedHistory = localStorage.getItem('supportHistory');
+    if (storedHistory) {
+      setHistory(JSON.parse(storedHistory));
+    }
   }, []);
 
   // บันทึกประวัติลงใน localStorage เมื่อมีการเปลี่ยนแปลงใน history
   useEffect(() => {
-    // localStorage.setItem('supportHistory', JSON.stringify(history));
+    localStorage.setItem('supportHistory', JSON.stringify(history));
   }, [history]);
 
   return (

@@ -163,8 +163,8 @@ p{
 }
 
 .loader {
-  border: 6px solid #f3f3f3; 
-  border-top: 6px solid #3498db; /* สีของ Spinner */
+  border: 15px solid #f3f3f3; 
+  border-top: 15px solid #3498db; /* สีของ Spinner */
   border-radius: 50%;
   width: 80px; /* ขนาดของ Spinner */
   height: 80px; /* ขนาดของ Spinner */

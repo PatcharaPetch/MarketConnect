@@ -21,10 +21,15 @@ const Login = () => {
     const { data, error } = supabase.auth.signInWithPassword({
       email: event.target[0].value,
       password: event.target[1].value,
+    }).then(res=>{
+      if(res?.error === null){
+        alert("Login success");
+      }
+      if(res?.error?.message === "Invalid login credentials"){
+        alert("Email or password does not correct");
+      }
     });
-    if (error) {
-      alert("Email or password does not correct.");
-    }
+    
   };
 
   return (

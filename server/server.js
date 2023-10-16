@@ -125,7 +125,7 @@ app.post("/delete", async (req, res) => {
   const { data, error } = await supabase
     .from("Food")
     .delete()
-    .eq("id", "64");
+    .eq("id", "75");
   const { error2 } = await supabase.storage
     .from("Picture_Food")
     .remove("64" + ".png");
@@ -145,7 +145,7 @@ app.post("/addproduct", async (req, res) => {
   //   .single();
   console.log(catagory_id);
   const { data, error } = await supabase.from("Food").insert({
-    id: "70",
+    id: "75",
     Food_Name: name,
     Catagory_Id: catagory_id,
     Price: price,
