@@ -62,11 +62,12 @@ const EditProfile = (props) => {
       });
   };
   if (isLoading) {
-    return <div className="Loading">
-                <div className="loader"></div>
-                <p>Loading...</p>
-          </div>
-    ;
+    return (
+      <div className="Loading">
+        <div className="loader" />
+        <p>Loading...</p>
+      </div>
+    );
   } else if (edit)
     return (
       <div className="form-box">
@@ -123,7 +124,7 @@ const Profile = () => {
   const supabase = useSupabase();
   const [isEdit, setEdit] = useState(false);
   const { user } = useContext(AuthContext);
-
+  console.log(user);
   const editProfile = () => {
     setEdit(!isEdit);
   };

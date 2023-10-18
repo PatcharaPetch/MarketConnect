@@ -1,22 +1,21 @@
-import React, { createContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Manage.scoped.css";
 import NavBar from "../components/NavBar";
 import { PopChat } from "../components/PopChat";
-import { AuthContext, useSupabase } from "../App";
+import { AuthContext } from "../App";
 import axios from "axios";
-import DeleteConfirmPopup from '../components/DeleteConfirmPopup';
+import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 
 const Manage = () => {
-  const supabase = useSupabase();
-  const { user } = createContext(AuthContext);
+  const { user } = useContext(AuthContext);
+  // console.log(user?.id);
   const handleDelete = async (event) => {
     setShowPopup(false);
     event.preventDefault();
     axios
       .post("http://localhost:3200/delete", {
-        user: user,
-        // food: food,
+        food: foodid,
       })
       .then((res) => {
         console.log(res);
@@ -37,8 +36,45 @@ const Manage = () => {
     setShowPopup(false);
   };
 
-
-  // const Edit_Item = async (event) => {};
+  const Edit_Item = () => {
+    const [Food, setFood] = useState([]);
+    useEffect(() => {
+      axios
+        .post("http://localhost:3200/yourfood", {
+          user: user?.id,
+        })
+        .then((res) => {
+          setFood(res.data);
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }, []);
+    if (!Food) return;
+    return Food.map((item) => {
+      return (
+        <form onSubmit={openPopup} className="edit-box">
+          <div className="edit-box-left" key={item?.id}>
+            <img src={item?.URL} alt="" />
+          </div>
+          <div className="edit-box-right">
+            <Link
+              to={"/addproduct/" + item.id}
+              className="edit-product"
+              key={item.id}
+            >
+              Edit
+              <img src="editicon.png" alt="" />
+            </Link>
+            <button type="submit" className="delete-product">
+              Delete
+              <img src="deleteicon.png" alt="" />
+            </button>
+          </div>
+        </form>
+      );
+    });
+  };
   return (
     <div className="container">
       <NavBar />
@@ -49,24 +85,22 @@ const Manage = () => {
           Add Product
         </Link>
       </div>
-      <form onSubmit={openPopup} className="edit-box">
+      {/* <form onSubmit={openPopup} className="edit-box">
         <div className="edit-box-left">Edit Product1</div>
         <div className="edit-box-right">
           <Link to="/editproduct" className="edit-product">
             Edit
             <img src="editicon.png" alt="" />
           </Link>
-          <button type="submit" className="delete-product" >
+          <button type="submit" className="delete-product">
             Delete
             <img src="deleteicon.png" alt="" />
           </button>
         </div>
-      </form>
+      </form> */}
+      <Edit_Item />
       {showPopup && (
-        <DeleteConfirmPopup
-          onCancel={closePopup}
-          onDelete={handleDelete}
-        />
+        <DeleteConfirmPopup onCancel={closePopup} onDelete={handleDelete} />
       )}
     </div>
   );
