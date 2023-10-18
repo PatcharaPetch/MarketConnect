@@ -72,11 +72,11 @@ const EditProfile = (props) => {
       <div className="form-box">
         <form onSubmit={save}>
           <label htmlFor="firstname">FirstName</label>
-          <input type="text" name="firstname" />
+          <input type="text" name="firstname" defaultValue={user?.user_metadata?.firstname ?? ""} />
           <label htmlFor="lastname">Lastname</label>
-          <input type="text" name="lastname" />
+          <input type="text" name="lastname" defaultValue={user?.user_metadata?.lastname ?? ""} />
           <label htmlFor="contact">Contact Number</label>
-          <input type="text" name="contact" />
+          <input type="text" name="contact"  defaultValue={user?.user_metadata?.contact ?? ""}/>
           <label htmlFor="changepicture">Picture</label>
           <input type="file" name="changepicture" />
           <div className="button">

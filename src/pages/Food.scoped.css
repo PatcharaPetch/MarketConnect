@@ -23,10 +23,11 @@ h1{
 }
 
 .food-box-grid{
+    width: 70%;
     padding-top: 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
-    grid-gap: 3.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(30%, 10fr));
+    grid-gap: 2rem;
 }
 
 .food-item{

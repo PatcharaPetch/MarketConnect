@@ -7,19 +7,16 @@ function Chatpage() {
   const [contacts, setContacts] = useState([
     { id: 1, name: 'NongWin' },
     { id: 2, name: 'MarkMuayHuaMin' },
-    { id: 3, name: 'GimJuay'}
+    { id: 3, name: 'GimJuay' }
   ]);
   const [selectedContact, setSelectedContact] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  
+
   useEffect(() => {
-    // สร้างการเชื่อมต่อ WebSocket ไปยังเซิร์ฟเวอร์ WebSocket 
-    const socket = io('http://localhost:3000/chatpage'); 
+    // สร้างการเชื่อมต่อ WebSocket ไปยังเซิร์ฟเวอร์ WebSocket
+    const socket = io('http://localhost:3000/chatpage');
     setSocket(socket);
-    if (socket.connected) {
-        setSocket(socket);
-    }
 
     // ตอนถอดเชื่อมต่อ WebSocket
     return () => {
@@ -30,10 +27,12 @@ function Chatpage() {
   // ส่วนของการส่งข้อความผ่าน WebSocket
   const handleSendMessage = () => {
     if (newMessage.trim() !== '' && socket && selectedContact) {
-      // สร้างข้อมูลข้อความที่จะส่ง
+      // สร้างข้อความที่จะส่ง
+
+
       const messageToSend = {
         text: newMessage,
-        sender: 'PatcharaPetch',
+        sender: 'PatcharaPetch', // คุณอาจต้องใช้ข้อมูลจากการล็อกอินของผู้ใช้ที่คุณเก็บไว้
         timestamp: new Date().toLocaleString(),
         receiver: selectedContact.id,
       };
@@ -46,6 +45,7 @@ function Chatpage() {
 
       // ล้างข้อความใน input
       setNewMessage('');
+
     }
   };
 
@@ -73,21 +73,20 @@ function Chatpage() {
           </div>
         ) : (
           <div className="chat-header">
-            <div className="no-contact">Choose Contact to Stat Chat</div>
+            <div className="no-contact">Choose Contact to Start Chat</div>
           </div>
         )}
         <div className="chat-messages">
           {messages.map((message, index) => (
             <div key={index} className={`message ${message.sender === 'You' ? 'sent' : 'received'}`}>
-              <span className="message-sender">{message.sender}</span> : <span className="message-text">{message.text}</span>
-              
+              <span className="message-sender">{message.sender}</span>: <span className="message-text">{message.text}</span>
             </div>
           ))}
         </div>
         <div className="chat-input">
           <input
             type="text"
-            placeholder="พิมพ์ข้อความของคุณ..."
+            placeholder="Type your message..."
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
           />

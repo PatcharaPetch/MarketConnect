@@ -1,4 +1,6 @@
 import "./Home.scoped.css";
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { PopChat } from "../components/PopChat";
@@ -43,7 +45,6 @@ const PromotionItems = () => {
 };
 
 const NewArrivals = () => {
-  const promotion_data = axios.get();
   return newArrivals_data.map((item) => {
     return (
       <Link className="new-item" key={item.id} to={"/fooddetail/" + item.id}>
