@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./AddProduct.scoped.css";
 import NavBar from "../components/NavBar";
 import { PopChat } from "../components/PopChat";
@@ -8,7 +8,9 @@ import { AuthContext, useSupabase } from "../App";
 
 const AddProduct = () => {
   const { foodid } = useParams();
+  console.log(foodid);
   const [file, setFile] = useState("");
+  const [food, setFood] = useState({});
   const [isUploading, setIsUploading] = useState(false);
   const supabase = useSupabase();
   const navigate = useNavigate();
@@ -22,8 +24,9 @@ const AddProduct = () => {
         price: event.target[1].value,
         catagory_id: cata,
         id: user.id,
-        description: event.target[4].value,
+        description: event.target[5].value,
         picture: file,
+        line: event.target[4].value,
       })
       .then((res) => {
         alert("Add food success.");
@@ -44,8 +47,9 @@ const AddProduct = () => {
         price: event.target[1].value,
         catagory_id: cata,
         id: user.id,
-        description: event.target[4].value,
+        description: event.target[5].value,
         picture: file,
+        line: event.target[4].value,
       })
       .then((res) => {
         alert("Add food success.");
@@ -77,66 +81,63 @@ const AddProduct = () => {
     setFile(data.publicUrl);
     setIsUploading(false);
   };
-  if (!foodid)
-    return (
-      <div className="container">
-        <NavBar />
-        <PopChat messages={[]} />
-        <h1>Product</h1>
-        <form onSubmit={handleAddProduct} className="form-box">
-          <label htmlFor="productname">Food Name</label>
-          <input type="text" />
-          <label htmlFor="productprice">Price</label>
-          <input type="text" />
-          <label htmlFor="category">Category</label>
-          <select name="category" id="category">
-            <option value="1">Thai-Food</option>
-            <option value="2">Japan-Food</option>
-            <option value="3">Korean-Food</option>
-            <option value="4">Italian-Food</option>
-            <option value="5">Drinks</option>
-            <option value="6">Sweets and Desserts</option>
-          </select>
-          <label htmlFor="productimage">Image</label>
-          <input onChange={upload_File} type="file" />
-          <label htmlFor="productdescription">Description</label>
-          <textarea name="" id="" cols="70" rows="7" />
-          <button disabled={isUploading} type="submit" className="send-button">
-            Done
-          </button>
-        </form>
-      </div>
-    );
-  else
-    return (
-      <div className="container">
-        <NavBar />
-        <PopChat messages={[]} />
-        <h1>Product</h1>
-        <form onSubmit={handleManageProduct} className="form-box">
-          <label htmlFor="productname">Food Name</label>
-          <input type="text" />
-          <label htmlFor="productprice">Price</label>
-          <input type="text" />
-          <label htmlFor="category">Category</label>
-          <select name="category" id="category">
-            <option value="1">Thai-Food</option>
-            <option value="2">Japan-Food</option>
-            <option value="3">Korean-Food</option>
-            <option value="4">Italian-Food</option>
-            <option value="5">Drinks</option>
-            <option value="6">Sweets and Desserts</option>
-          </select>
-          <label htmlFor="productimage">Image</label>
-          <input onChange={upload_File} type="file" />
-          <label htmlFor="productdescription">Description</label>
-          <textarea name="" id="" cols="70" rows="7" />
-          <button disabled={isUploading} type="submit" className="send-button">
-            Done
-          </button>
-        </form>
-      </div>
-    );
+  useEffect(() => {
+    axios
+      .post("http://localhost:3200/fooddetail", {
+        foodid: foodid,
+      })
+      .then(({ data }) => {
+        setFood(data[0]);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }, []);
+
+  return (
+    <div className="container">
+      <NavBar />
+      <PopChat messages={[]} />
+      <h1>Product</h1>
+      <form onSubmit={handleManageProduct} className="form-box">
+        <label htmlFor="productname">Food Name</label>
+        <input type="text" defaultValue={food?.Food_Name ?? ""} />
+        <label htmlFor="productprice">Price</label>
+        <input type="text" defaultValue={food?.Price ?? ""} />
+        <label htmlFor="category">Category</label>
+        <select
+          name="category"
+          id="category"
+          select
+          property="status"
+          value={food?.Catagory_Id ?? ""}
+          styleClass="form-control"
+        >
+          <option value="1">Thai-Food</option>
+          <option value="2">Japan-Food</option>
+          <option value="3">Korean-Food</option>
+          <option value="4">Italian-Food</option>
+          <option value="5">Drinks</option>
+          <option value="6">Sweets and Desserts</option>
+        </select>
+        <label htmlFor="productimage">Image</label>
+        <input onChange={upload_File} type="file" />
+        <label htmlFor="productprice">Line</label>
+        <input type="text" defaultValue={food?.Line ?? ""} />
+        <label htmlFor="productdescription">Description</label>
+        <textarea
+          name=""
+          id=""
+          cols="70"
+          rows="7"
+          defaultValue={food?.Description ?? ""}
+        />
+        <button disabled={isUploading} type="submit" className="send-button">
+          Done
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default AddProduct;

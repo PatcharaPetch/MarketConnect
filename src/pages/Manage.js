@@ -59,9 +59,9 @@ const Manage = () => {
           </div>
           <div className="edit-box-right">
             <Link
-              to={"/addproduct/" + item.id}
               className="edit-product"
               key={item.id}
+              to={"/addproduct/" + item.id}
             >
               Edit
               <img src="editicon.png" alt="" />

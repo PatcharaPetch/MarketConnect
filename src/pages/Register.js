@@ -23,7 +23,6 @@ const Register = () => {
           setIsLoading(false);
           return;
         }
-        console.log(res);
         navigate("/verify", {
           state: {
             email: event.target[0].value,
@@ -32,6 +31,7 @@ const Register = () => {
       })
       .catch((err) => {
         alert("There is an error. Please try again.");
+        console.log(err);
         console.error(err);
         setIsLoading(false);
       });
