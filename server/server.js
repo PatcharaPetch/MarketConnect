@@ -68,10 +68,23 @@ app.post("/food", async (req, res) => {
   }
 });
 
+app.post("/yourfood", async (req, res) => {
+  const { user } = req.body;
+  const { data, error } = await supabase
+    .from("Food")
+    .select("id, Food_Name, Price, URL")
+    .eq("Shopkeeper_Id", user);
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
 app.post("/new", async (req, res) => {
   const { data, error } = await supabase
     .from("Food")
-    .select("id, Food_Name, Price,URL")
+    .select("id, Food_Name, Price, URL")
     .order("created_at", { ascending: false })
     .limit(4);
   if (error) {
@@ -156,6 +169,26 @@ app.post("/addproduct", async (req, res) => {
     Description: description,
     URL: picture,
   });
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.post("/manageproduct", async (req, res) => {
+  const { food, name, price, catagory_id, id, description, picture } = req.body;
+  const { data, error } = await supabase
+    .from("Food")
+    .update({
+      Food_Name: name,
+      Catagory_Id: catagory_id,
+      Price: price,
+      Shopkeeper_Id: id,
+      Description: description,
+      URL: picture,
+    })
+    .eq("id", food);
   if (error) {
     res.status(400).json(error);
   } else {

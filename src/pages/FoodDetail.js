@@ -4,14 +4,10 @@ import "./FoodDetail.scoped.css";
 import NavBar from "../components/NavBar";
 import { PopChat } from "../components/PopChat";
 import axios from "axios";
-import { useSupabase } from "../App";
 
 const FoodDetail = () => {
-  const supabase = useSupabase();
   const { foodid } = useParams();
   const [food, setFood] = useState({});
-  const [img, setImg] = useState();
-  1;
   useEffect(() => {
     axios
       .post("http://localhost:3200/fooddetail", {
@@ -23,13 +19,6 @@ const FoodDetail = () => {
       .catch((err) => {
         alert(err);
       });
-    // const {
-    //   data: { publicUrl },
-    // } = supabase.storage.from("Picture_Food").getPublicUrl(foodid + ".png");
-    // if (publicUrl) {
-    //   const timestamp = Date.now().toString();
-    //   setImg(publicUrl + `?timestamp=${timestamp}`);
-    // }
   }, []);
 
   useEffect(() => {
