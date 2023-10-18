@@ -31,11 +31,12 @@ app.post("/register", async (req, res) => {
 });
 
 app.post("/sendsupport", async (req, res) => {
-  const { email, message, status } = req.body;
+  const { email, message, status, contact } = req.body;
   const { data, error } = await supabase.from("Support").insert({
     Sender: email,
     Status: status,
     Problem: message,
+    Contact: contact,
   });
   if (error) {
     res.status(400).json(error);
@@ -45,11 +46,49 @@ app.post("/sendsupport", async (req, res) => {
 });
 
 app.post("/getsupport", async (req, res) => {
-  const { email, message, status } = req.body;
-  const { data, error } = await supabase.from("Support").select({
-    Status: status,
-    Problem: message,
-  });
+  const { email } = req.body;
+  console.log(email);
+  const { data, error } = await supabase
+    .from("Support")
+    .select("Problem,Status,id")
+    .eq("Sender", email);
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.post("/adminsupport", async (req, res) => {
+  const { data, error } = await supabase
+    .from("Support")
+    .select("Problem,Status,id,Sender,Contact");
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.post("/changestatus", async (req, res) => {
+  const { status, id } = req.body;
+  const { data, error } = await supabase
+    .from("Support")
+    .update({ Status: status })
+    .eq("id", id);
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.post("/unsendsupport", async (req, res) => {
+  const { id } = req.body;
+  const { data, error } = await supabase
+    .from("Support")
+    .delete()
+    .eq("id", id);
   if (error) {
     res.status(400).json(error);
   } else {
@@ -167,19 +206,12 @@ app.post("/save", async (req, res) => {
 
 app.post("/delete", async (req, res) => {
   const { food } = req.body;
-  // const shopkeeper = supabase
-  //   .from("Food")
-  //   .select("Shopkeeper_Id,users!inner(Shopkeerer_Id)")
-  //   .eq("User_Info.id", user);
   const { data, error } = await supabase
     .from("Food")
     .delete()
     .eq("id", food);
-  const { error2 } = await supabase.storage
-    .from("Picture_Food")
-    .remove(food + ".png");
-  if (error || error2) {
-    res.status(400).json(error || error2);
+  if (error) {
+    res.status(400).json(error);
   } else {
     res.status(200).json(data);
   }

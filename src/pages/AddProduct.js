@@ -58,7 +58,7 @@ const AddProduct = () => {
   };
 
   const upload_File = async (event) => {
-    console.log(event.target.files[0]);
+    // console.log(event.target.files[0]);
     if (event.target.files[0] != undefined) {
       setIsUploading(true);
       const filename = Math.random()

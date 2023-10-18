@@ -44,7 +44,6 @@ const PromotionItems = () => {
 };
 
 const NewArrivals = () => {
-  const [isLoading, setLoading] = useState(true);
   const [food, setFood] = useState([]);
   useEffect(() => {
     axios
