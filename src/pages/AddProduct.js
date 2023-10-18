@@ -8,7 +8,6 @@ import { AuthContext, useSupabase } from "../App";
 
 const AddProduct = () => {
   const { foodid } = useParams();
-  console.log(foodid);
   const [file, setFile] = useState("");
   const [food, setFood] = useState({});
   const [isUploading, setIsUploading] = useState(false);
@@ -18,88 +17,92 @@ const AddProduct = () => {
   const handleAddProduct = (event) => {
     event.preventDefault();
     const cata = event.target[2].value;
-    axios
-      .post("http://localhost:3200/addproduct", {
-        name: event.target[0].value,
-        price: event.target[1].value,
-        catagory_id: cata,
-        id: user.id,
-        description: event.target[5].value,
-        picture: file,
-        line: event.target[4].value,
-      })
-      .then((res) => {
-        alert("Add food success.");
-        navigate("/manage");
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
-
-  const handleManageProduct = (event) => {
-    event.preventDefault();
-    const cata = event.target[2].value;
-    axios
-      .post("http://localhost:3200/manageproduct", {
-        food: foodid,
-        name: event.target[0].value,
-        price: event.target[1].value,
-        catagory_id: cata,
-        id: user.id,
-        description: event.target[5].value,
-        picture: file,
-        line: event.target[4].value,
-      })
-      .then((res) => {
-        alert("Add food success.");
-        navigate("/manage");
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    if (foodid == undefined) {
+      axios
+        .post("http://localhost:3200/addproduct", {
+          name: event.target[0].value,
+          price: event.target[1].value,
+          catagory_id: cata,
+          id: user.id,
+          description: event.target[5].value,
+          picture: file,
+          line: event.target[4].value,
+        })
+        .then((res) => {
+          alert("Add food success.");
+          navigate("/manage");
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    } else {
+      axios
+        .post("http://localhost:3200/manageproduct", {
+          name: event.target[0].value,
+          price: event.target[1].value,
+          catagory_id: cata,
+          id: user.id,
+          description: event.target[5].value,
+          picture: file,
+          line: event.target[4].value,
+          food: foodid,
+        })
+        .then((res) => {
+          alert("Manage food success.");
+          navigate("/manage");
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }
   };
 
   const upload_File = async (event) => {
-    setIsUploading(true);
-    const filename = Math.random()
-      .toString(36)
-      .slice(2);
-    const { error } = await supabase.storage
-      .from("Picture_Food")
-      .upload(filename + ".png", event.target.files[0], {
-        contentType: "image/png",
-        upsert: true,
-      });
-    if (error) {
+    console.log(event.target.files[0]);
+    if (event.target.files[0] != undefined) {
+      setIsUploading(true);
+      const filename = Math.random()
+        .toString(36)
+        .slice(2);
+      const { error } = await supabase.storage
+        .from("Picture_Food")
+        .upload(filename + ".png", event.target.files[0], {
+          contentType: "image/png",
+          upsert: true,
+        });
+      if (error) {
+        setIsUploading(false);
+        return alert(error);
+      }
+      const { data } = supabase.storage
+        .from("Picture_Food")
+        .getPublicUrl(filename + ".png");
+      setFile(data.publicUrl);
       setIsUploading(false);
-      return alert(error);
     }
-    const { data } = supabase.storage
-      .from("Picture_Food")
-      .getPublicUrl(filename + ".png");
-    setFile(data.publicUrl);
-    setIsUploading(false);
   };
-  useEffect(() => {
-    axios
-      .post("http://localhost:3200/fooddetail", {
-        foodid: foodid,
-      })
-      .then(({ data }) => {
-        setFood(data[0]);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  }, []);
+  if (foodid != undefined)
+    useEffect(() => {
+      axios
+        .post("http://localhost:3200/fooddetail", {
+          foodid: foodid,
+        })
+        .then(({ data }) => {
+          setFood(data[0]);
+          setFile(data[0].URL);
+          console.log(file);
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    }, []);
 
   return (
     <div className="container">
       <NavBar />
-      <PopChat messages={[]} />
+      {/* <PopChat messages={[]} /> */}
       <h1>Product</h1>
-      <form onSubmit={handleManageProduct} className="form-box">
+      <form onSubmit={handleAddProduct} className="form-box">
         <label htmlFor="productname">Food Name</label>
         <input type="text" defaultValue={food?.Food_Name ?? ""} />
         <label htmlFor="productprice">Price</label>
@@ -110,7 +113,7 @@ const AddProduct = () => {
           id="category"
           select
           property="status"
-          value={food?.Catagory_Id ?? ""}
+          value={food?.Catagory_Id ?? "1"}
           styleClass="form-control"
         >
           <option value="1">Thai-Food</option>

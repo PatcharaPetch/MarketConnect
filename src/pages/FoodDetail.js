@@ -27,7 +27,7 @@ const FoodDetail = () => {
   return (
     <div className="container">
       <NavBar />
-      <PopChat messages={[]} />
+      {/* <PopChat messages={[]} /> */}
       <div className="container-box">
         <div className="box">
           {/* card left */}

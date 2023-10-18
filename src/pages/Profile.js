@@ -160,7 +160,7 @@ const Profile = () => {
   return (
     <div className="container">
       <NavBar />
-      <PopChat messages={[]} />
+      {/* <PopChat messages={[]} /> */}
       <div className="main">
         <h1>Edit Profile</h1>
         <EditProfile

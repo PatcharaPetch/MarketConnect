@@ -30,13 +30,25 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.post("/support", async (req, res) => {
-  const { name, email, contact, message } = req.body;
-  const { data, error } = await supabase.from("support").insert({
-    Name: name,
-    Email: email,
-    Contact_Number: contact,
-    Message: message,
+app.post("/sendsupport", async (req, res) => {
+  const { email, message, status } = req.body;
+  const { data, error } = await supabase.from("Support").insert({
+    Sender: email,
+    Status: status,
+    Problem: message,
+  });
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.post("/getsupport", async (req, res) => {
+  const { email, message, status } = req.body;
+  const { data, error } = await supabase.from("Support").select({
+    Status: status,
+    Problem: message,
   });
   if (error) {
     res.status(400).json(error);

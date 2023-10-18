@@ -27,7 +27,7 @@ const Home = () => {
             <Random />
           </div>
         </section>
-        <PopChat messages={[]} />
+        {/* <PopChat messages={[]} /> */}
       </main>
     </div>
   );
@@ -66,26 +66,30 @@ const NewArrivals = () => {
     );
   });
 };
-const ranFood = [];
+
 const Random = () => {
-  const [Food, setFood] = useState([]);
+  const [ranFood, setRanFood] = useState([]);
+
   useEffect(() => {
     axios
       .post("http://localhost:3200/food")
       .then((res) => {
-        setFood(res.data);
+        const food = res.data;
+        const randomFood = [];
+        for (let i = 0; i < 6; i++) {
+          var random = Math.floor(Math.random() * food.length);
+          randomFood[i] = food[random];
+          food.splice(random, 1);
+        }
+        setRanFood(randomFood);
       })
       .catch((err) => {
         alert(err);
       });
   }, []);
-  useEffect(() => {
-    for (let i = 0; i < 6; i++) {
-      var random = Math.floor(Math.random() * Food.length);
-      ranFood[i] = Food[random];
-      Food.splice(random, 1);
-    }
-  }, [Food]);
+
+  if (ranFood[0] == undefined) return;
+
   return ranFood.map((item) => {
     return (
       <Link className="rec-item" key={item?.id} to={"/fooddetail/" + item?.id}>

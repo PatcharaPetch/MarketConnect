@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import "./Support.scoped.css";
 import NavBar from "../components/NavBar";
 import { PopChat } from "../components/PopChat";
+import { AuthContext } from "../App";
 
 function Support() {
+  const { user } = useContext(AuthContext);
   const [issue, setIssue] = useState("");
   const [history, setHistory] = useState([]);
 
@@ -13,9 +16,14 @@ function Support() {
 
   const handleSubmit = () => {
     // สร้างประวัติใหม่โดยเพิ่มข้อมูล issue และ status "Not Finish" ลงใน state
-    const newHistoryEntry = { issue, status: "Not Finish" };
-    const newHistory = [...history, newHistoryEntry];
-    setHistory(newHistory);
+    axios.post("http://localhost:3200/sendsupport", {
+      email: user?.email,
+      message: issue,
+      status: "Not Finish",
+    });
+    // const newHistoryEntry = { issue, status: "Not Finish" };
+    // const newHistory = [...history, newHistoryEntry];
+    // setHistory(newHistory);
 
     // เคลียร์ค่า issue หลังจากส่ง
     setIssue("");
@@ -32,21 +40,29 @@ function Support() {
   };
   // โหลดข้อมูลประวัติเมื่อหน้า Support โหลด
   useEffect(() => {
-    const storedHistory = localStorage.getItem('supportHistory');
-    if (storedHistory) {
-      setHistory(JSON.parse(storedHistory));
-    }
+    axios
+      .post("http://localhost:3200/getsupport", {
+        email: user?.email,
+      })
+      .then((res) => {
+        console.log(res);
+        setHistory(res.data);
+      })
+      .catch((err) => {
+        alert(err);
+      });
   }, []);
 
   // บันทึกประวัติลงใน localStorage เมื่อมีการเปลี่ยนแปลงใน history
-  useEffect(() => {
-    localStorage.setItem('supportHistory', JSON.stringify(history));
-  }, [history]);
-
+  // useEffect(() => {
+  //   localStorage.setItem("supportHistory", JSON.stringify(history));
+  // }, [history]);
+  const entry = {};
+  const index = 3;
   return (
     <div className="container">
       <NavBar />
-      <PopChat messages={[]} />
+      {/* <PopChat messages={[]} /> */}
       <div className="support-container">
         <div className="left-container">
           <h2>History of Data transmission</h2>
@@ -60,24 +76,24 @@ function Support() {
               </tr>
             </thead>
             <tbody>
-              {history.map((entry, index) => (
-                <tr key={index}>
-                  <td style={{ width: "60%" }}>
-                    <div className="problem-text">{entry.issue}</div>
-                  </td>
-                  <td style={{ width: "20%" }}>{entry.status}</td>
-                  <td style={{ width: "20%" }}>
-                    <button
-                      className="unsend-button"
-                      onClick={() => handleUnsend(index)}
-                    >
-                      <span role="img" aria-label="Unsend">
-                        ❌
-                      </span>
-                    </button>
-                  </td>
-                </tr>
-              ))}
+              {/* {history.map((entry, index) => ( */}
+              <tr key={index}>
+                <td style={{ width: "60%" }}>
+                  <div className="problem-text">{entry?.issue}</div>
+                </td>
+                <td style={{ width: "20%" }}>{entry?.status}</td>
+                <td style={{ width: "20%" }}>
+                  <button
+                    className="unsend-button"
+                    onClick={() => handleUnsend(index)}
+                  >
+                    <span role="img" aria-label="Unsend">
+                      ❌
+                    </span>
+                  </button>
+                </td>
+              </tr>
+              {/* ))} */}
             </tbody>
           </table>
         </div>

@@ -35,7 +35,7 @@ const Food = () => {
   return (
     <div className="container">
       <NavBar />
-      <PopChat messages={[]} />
+      {/* <PopChat messages={[]} /> */}
       <main>
         <section id="food-box">
           <FoodSearchBar onSearch={handleSearch} />
