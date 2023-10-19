@@ -13,6 +13,7 @@ body{
     width: 100vw;
     height: 100vh;
     background-color: #F6F4EB;
+    overflow: hidden;
 }
 .container-box{
     width: 1300px;
@@ -20,7 +21,6 @@ body{
 }
 img{
     width: 100%;
-    height: 100%;
     display: block;
     border-radius: 1rem;
     object-fit: cover ;
@@ -105,6 +105,8 @@ img{
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 5rem;
         padding: 1.5rem;
+        overflow: hidden;
+    
     }
     .container-box{
         width: 100%;
@@ -114,6 +116,8 @@ img{
     }
     .img-box{
         display: flex;
+        width: 100%;
+        height: 100%;
         flex-direction: column;
         justify-content: center;
         align-items: center;
