@@ -17,6 +17,7 @@ import AddProduct from "./pages/AddProduct";
 import Verify from "./pages/Verify";
 import Manage from "./pages/Manage";
 import GuardedRoute from "./components/GuardedRoute";
+import GuardedAdmin from "./components/GuardedAdmin";
 import Admin from "./pages/Admin";
 import Chatpage from "./pages/Chatpage";
 import { createClient } from "@supabase/supabase-js";
@@ -91,7 +92,6 @@ function App() {
       }
     }
   }, [pathname]);
-
   return (
     <AuthContext.Provider
       value={{
@@ -115,8 +115,10 @@ function App() {
           <Route path="/support" element={<Support />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/manage" element={<Manage />} />
-          <Route path="/admin" element={<Admin />} />
           <Route path="/chatpage" element={<Chatpage />} />
+        </Route>
+        <Route element={<GuardedAdmin />}>
+          <Route path="/admin" element={<Admin />} />
         </Route>
       </Routes>
     </AuthContext.Provider>
