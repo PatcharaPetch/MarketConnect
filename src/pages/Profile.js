@@ -41,7 +41,7 @@ const EditProfile = (props) => {
   const save = async (event) => {
     event.preventDefault();
     setLoading(true);
-    if (event.target[3].files[0] != undefined)
+    if (event.target[3].files[0] !== undefined)
       axios
         .post("http://localhost:3200/save", {
           firstname: event.target[0].value,

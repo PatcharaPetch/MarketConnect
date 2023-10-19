@@ -34,10 +34,21 @@ const Home = () => {
 };
 
 const PromotionItems = () => {
-  return promotion_data.map((item) => {
+  const [profood, setProFood] = useState([]);
+  useEffect(() => {
+    axios
+      .post("http://localhost:3200/pro")
+      .then((res) => {
+        setProFood(res.data);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  }, []);
+  return profood.map((item) => {
     return (
-      <div className="promotion-item" key={item.id} to={item.link}>
-        <img src={item.image} alt="" />
+      <div className="promotion-item">
+        <img src={item.URL} alt="" />
       </div>
     );
   });
@@ -99,38 +110,5 @@ const Random = () => {
     );
   });
 };
-
-const promotion_data = [
-  {
-    id: 1,
-    image: "sale0.svg",
-    link: "/fooddetail",
-  },
-  {
-    id: 2,
-    image: "sale4.svg",
-    link: "/fooddetail",
-  },
-  {
-    id: 3,
-    image: "detail1.svg",
-    link: "/fooddetail",
-  },
-  {
-    id: 4,
-    image: "promo1.svg",
-    link: "/fooddetail",
-  },
-  {
-    id: 5,
-    image: "promo2.svg",
-    link: "/fooddetail",
-  },
-  {
-    id: 6,
-    image: "promo3.svg",
-    link: "/fooddetail",
-  },
-];
 
 export default Home;

@@ -17,7 +17,7 @@ const AddProduct = () => {
   const handleAddProduct = (event) => {
     event.preventDefault();
     const cata = event.target[2].value;
-    if (foodid == undefined) {
+    if (foodid === undefined) {
       axios
         .post("http://localhost:3200/addproduct", {
           name: event.target[0].value,
@@ -59,7 +59,7 @@ const AddProduct = () => {
 
   const upload_File = async (event) => {
     // console.log(event.target.files[0]);
-    if (event.target.files[0] != undefined) {
+    if (event.target.files[0] !== undefined) {
       setIsUploading(true);
       const filename = Math.random()
         .toString(36)
@@ -81,7 +81,7 @@ const AddProduct = () => {
       setIsUploading(false);
     }
   };
-  if (foodid != undefined)
+  if (foodid !== undefined)
     useEffect(() => {
       axios
         .post("http://localhost:3200/fooddetail", {
@@ -96,6 +96,10 @@ const AddProduct = () => {
           alert(err);
         });
     }, []);
+
+  const changeCatagory = (e) => {
+    setFood({ ...food, Catagory_Id: e.target.value });
+  };
 
   return (
     <div className="container">
@@ -114,6 +118,7 @@ const AddProduct = () => {
           select
           property="status"
           value={food?.Catagory_Id ?? "1"}
+          onChange={changeCatagory}
           styleClass="form-control"
         >
           <option value="1">Thai-Food</option>

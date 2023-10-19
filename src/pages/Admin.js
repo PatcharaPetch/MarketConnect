@@ -4,7 +4,6 @@ import "./Admin.scoped.css";
 
 function Admin() {
   const [issues, setIssues] = useState([]);
-  console.log("2");
   const getdata = () => {
     axios
       .post("http://localhost:3200/adminsupport")

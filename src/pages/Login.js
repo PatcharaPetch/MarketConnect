@@ -1,8 +1,7 @@
-import axios from "axios";
 import "./Login.scoped.css";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { AuthContext, useSupabase } from "../App";
 
 const Login = () => {

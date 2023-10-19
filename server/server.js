@@ -23,8 +23,6 @@ app.post("/register", async (req, res) => {
   // console.log(data);
   if (error) {
     res.status(400).json(error);
-    // } else if (data.user.identities.length === 0) {
-    //   res.status(400).json("Email that been use");
   } else {
     res.status(200).json(data);
   }
@@ -161,10 +159,8 @@ app.post("/new", async (req, res) => {
   }
 });
 
-app.post("/randomfood", async (req, res) => {
-  const { data, error } = await supabase
-    .from("Food")
-    .select("id, Food_Name, Price, URL");
+app.post("/pro", async (req, res) => {
+  const { data, error } = await supabase.from("Promotion").select(" URL");
   if (error) {
     res.status(400).json(error);
   } else {
@@ -204,7 +200,7 @@ app.post("/save", async (req, res) => {
       contact: contact,
     })
     .eq("id_user", id);
-  if (img.byteLength != 2) {
+  if (img.byteLength !== 2) {
     await supabase.storage.from("Profile_User").upload(id + ".png", img, {
       contentType: "image/png",
       upsert: true,
