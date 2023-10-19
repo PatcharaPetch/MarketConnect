@@ -4,6 +4,7 @@ import "./Support.scoped.css";
 import NavBar from "../components/NavBar";
 import { PopChat } from "../components/PopChat";
 import { AuthContext } from "../App";
+import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 
 function Support() {
   const { user } = useContext(AuthContext);
@@ -25,6 +26,19 @@ function Support() {
         alert(err);
       });
   };
+  const [supportDel, setSupportDel] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
+  const openPopup = (event, supportId) => {
+    // console.log(event, itemId);
+    setSupportDel(supportId);
+    event.preventDefault();
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
   const handleSubmit = () => {
     // สร้างประวัติใหม่โดยเพิ่มข้อมูล issue และ status "Not Finish" ลงใน state
     axios
@@ -47,14 +61,14 @@ function Support() {
     // เคลียร์ค่า issue หลังจากส่ง
     // setIssue("");
   };
-  const handleUnsend = (event, id) => {
+  const handleUnsend = (event) => {
     // สร้างรายการประวัติใหม่โดยลบข้อมูลในรายการที่ต้องการยกเลิก
     // const newHistory = [...history];
     // newHistory.splice(index, 1);
     event.preventDefault();
     axios
       .post("http://localhost:3200/unsendsupport", {
-        id: id,
+        id: supportDel,
       })
       .then((res) => {
         getdata();
@@ -62,6 +76,7 @@ function Support() {
       .catch((err) => {
         alert(err);
       });
+    setShowPopup(false);
     // อัปเดตประวัติใหม่
     // setHistory(newHistory);
 
@@ -102,7 +117,7 @@ function Support() {
                   <td style={{ width: "20%" }}>
                     <button
                       className="unsend-button"
-                      onClick={(e) => handleUnsend(e, entry?.id)}
+                      onClick={(e) => openPopup(e, entry?.id)}
                     >
                       <span role="img" aria-label="Unsend">
                         ❌
@@ -111,6 +126,12 @@ function Support() {
                   </td>
                 </tr>
               ))}
+              {showPopup && (
+                <DeleteConfirmPopup
+                  onCancel={closePopup}
+                  onDelete={handleUnsend}
+                />
+              )}
             </tbody>
           </table>
         </div>
