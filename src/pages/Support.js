@@ -54,17 +54,8 @@ function Support() {
       .catch((err) => {
         alert(err);
       });
-    // const newHistoryEntry = { issue, status: "Not Finish" };
-    // const newHistory = [...history, newHistoryEntry];
-    // setHistory(newHistory);
-
-    // เคลียร์ค่า issue หลังจากส่ง
-    // setIssue("");
   };
   const handleUnsend = (event) => {
-    // สร้างรายการประวัติใหม่โดยลบข้อมูลในรายการที่ต้องการยกเลิก
-    // const newHistory = [...history];
-    // newHistory.splice(index, 1);
     event.preventDefault();
     axios
       .post("http://localhost:3200/unsendsupport", {
@@ -77,20 +68,12 @@ function Support() {
         alert(err);
       });
     setShowPopup(false);
-    // อัปเดตประวัติใหม่
-    // setHistory(newHistory);
-
-    // (อาจต้องจัดการต่อเพื่อยกเลิกการส่งข้อมูลจริงๆ)
   };
   // โหลดข้อมูลประวัติเมื่อหน้า Support โหลด
   useEffect(() => {
     getdata();
   }, [user]);
 
-  // บันทึกประวัติลงใน localStorage เมื่อมีการเปลี่ยนแปลงใน history
-  // useEffect(() => {
-  //   localStorage.setItem("supportHistory", JSON.stringify(history));
-  // }, [history]);
   return (
     <div className="container">
       <NavBar />
