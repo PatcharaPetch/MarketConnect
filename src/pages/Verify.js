@@ -15,6 +15,7 @@ function Verify() {
         token: otp.join(""),
       })
       .then((res) => {
+        alert("Verify success");
         navigate("/login");
       })
       .catch((err) => {
@@ -69,7 +70,6 @@ function Verify() {
           ))}
         </div>
         <div className="footer">
-          <Link className="resend">Resend Code</Link>
           <button onClick={sendOtp}>Submit</button>
         </div>
       </section>

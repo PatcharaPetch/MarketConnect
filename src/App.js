@@ -34,7 +34,7 @@ export const AuthContext = createContext({});
 
 function App() {
   const [session, setSession] = useState(null);
-  const [isFetching, setIsFetching] = useState(false);
+  const [isFetching, setIsFetching] = useState(true);
   const didMount = useRef(false);
   const action = useNavigationType();
   const location = useLocation();
@@ -58,7 +58,7 @@ function App() {
     if (!didMount.current) {
       return () => (didMount.current = true);
     }
-    setIsFetching(true);
+    setIsFetching(false);
   }, [session]);
 
   useEffect(() => {
