@@ -3,29 +3,31 @@ import axios from "axios";
 import "./Admin.scoped.css";
 
 function Admin() {
-  const [issues, setIssues] = useState([
-    // {
-    //   id: 1,
-    //   email: "userStupid@example.com",
-    //   contact: "123-456-7890",
-    //   problem: "ปัญหาที่ 1",
-    //   status: "Not Finish",
-    // },
-    // {
-    //   id: 2,
-    //   email: "usereiei@example.com",
-    //   contact: "987-654-3210",
-    //   problem: "ปัญหาที่ 2",
-    //   status: "Finish",
-    // },
-    // {
-    //   id: 3,
-    //   email: "userhuakuy@example.com",
-    //   contact: "123-456-7890",
-    //   problem: "ปัญหาที่ 3",
-    //   status: "Not Finish",
-    // },
-  ]);
+  const [issues, setIssues] = useState([]);
+
+  // {
+  //   id: 1,
+  //   email: "userStupid@example.com",
+  //   contact: "123-456-7890",
+  //   problem: "ปัญหาที่ 1",
+  //   status: "Not Finish",
+  // },
+  // {
+  //   id: 2,
+  //   email: "usereiei@example.com",
+  //   contact: "987-654-3210",
+  //   problem: "ปัญหาที่ 2",
+  //   status: "Finish",
+  // },
+  // {
+  //   id: 3,
+  //   email: "userhuakuy@example.com",
+  //   contact: "123-456-7890",
+  //   problem: "ปัญหาที่ 3",
+  //   status: "Not Finish",
+  // },
+  // ]);
+
   const getdata = () => {
     axios
       .post("http://localhost:3200/adminsupport")
@@ -36,6 +38,7 @@ function Admin() {
         alert(err);
       });
   };
+  getdata();
   useEffect(() => {
     getdata();
   }, []);
