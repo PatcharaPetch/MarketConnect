@@ -121,6 +121,20 @@ app.post("/food", async (req, res) => {
   }
 });
 
+app.post("/getAdmin", async (req, res) => {
+  const { user } = req.body;
+  const { data, error } = await supabase
+    .from("User")
+    .select("Admin")
+    .eq("id_user", user);
+  // console.log(data[0]);
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data[0]);
+  }
+});
+
 app.post("/yourfood", async (req, res) => {
   const { user } = req.body;
   const { data, error } = await supabase
