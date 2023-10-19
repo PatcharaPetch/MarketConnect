@@ -45,7 +45,7 @@ const FoodDetail = () => {
             </h2>
             <div className="product-price">
               <p className="last-price">
-                Price: <p>{food?.Price ?? "-"}</p>
+                Price :{" "}{" "}{food?.Price ?? "-"} ฿
               </p>
             </div>
             <div className="product-detail">
