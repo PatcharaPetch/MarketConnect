@@ -9,16 +9,16 @@ import DeleteConfirmPopup from "../components/DeleteConfirmPopup";
 
 const Manage = () => {
   const { user } = useContext(AuthContext);
-  // console.log(user?.id);
+  const [Change, setChange] = useState(false);
   const handleDelete = async (event) => {
     setShowPopup(false);
     event.preventDefault();
     axios
       .post("http://localhost:3200/delete", {
-        food: foodid,
+        food: idfood,
       })
       .then((res) => {
-        console.log(res);
+        setChange(!Change);
       })
       .catch((err) => {
         alert(err);
@@ -26,8 +26,10 @@ const Manage = () => {
   };
 
   const [showPopup, setShowPopup] = useState(false); // State เพื่อแสดง/ซ่อน Popup
-
-  const openPopup = (event) => {
+  const [idfood, setIdfood] = useState("");
+  const openPopup = (event, itemId) => {
+    // console.log(event, itemId);
+    setIdfood(itemId);
     event.preventDefault();
     setShowPopup(true);
   };
@@ -39,29 +41,30 @@ const Manage = () => {
   const Edit_Item = () => {
     const [Food, setFood] = useState([]);
     useEffect(() => {
-      axios
-        .post("http://localhost:3200/yourfood", {
-          user: user?.id,
-        })
-        .then((res) => {
-          setFood(res.data);
-        })
-        .catch((err) => {
-          alert(err);
-        });
-    }, []);
+      if (user != undefined)
+        axios
+          .post("http://localhost:3200/yourfood", {
+            user: user?.id,
+          })
+          .then((res) => {
+            setFood(res.data);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+    }, [Change]);
     if (!Food) return;
     return Food.map((item) => {
       return (
-        <form onSubmit={openPopup} className="edit-box">
+        <form onSubmit={(e) => openPopup(e, item?.id)} className="edit-box">
           <div className="edit-box-left" key={item?.id}>
             <img src={item?.URL} alt="" />
           </div>
           <div className="edit-box-right">
             <Link
-              to={"/addproduct/" + item.id}
               className="edit-product"
               key={item.id}
+              to={"/addproduct/" + item.id}
             >
               Edit
               <img src="editicon.png" alt="" />

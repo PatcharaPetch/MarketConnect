@@ -4,7 +4,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import NavBar from "../components/NavBar";
 import { PopChat } from "../components/PopChat";
-
 const Home = () => {
   return (
     <div className="container">
@@ -68,23 +67,34 @@ const NewArrivals = () => {
 };
 
 const Random = () => {
-  const [ranFood, setFood] = useState([]);
+  const [ranFood, setRanFood] = useState([]);
+
   useEffect(() => {
     axios
       .post("http://localhost:3200/food")
       .then((res) => {
-        setFood(res.data);
+        const food = res.data;
+        const randomFood = [];
+        for (let i = 0; i < 6; i++) {
+          var random = Math.floor(Math.random() * food.length);
+          randomFood[i] = food[random];
+          food.splice(random, 1);
+        }
+        setRanFood(randomFood);
       })
       .catch((err) => {
         alert(err);
       });
   }, []);
-  return random_data.map((item) => {
+
+  if (ranFood[0] == undefined) return;
+
+  return ranFood.map((item) => {
     return (
-      <Link className="rec-item" key={item.id} to={"/fooddetail/" + item.id}>
-        <img src={item.image} alt="" />
-        <div className="rec-item-name">{item.name}</div>
-        <div className="rec-item-price">{item.price.toFixed(2)} ฿</div>
+      <Link className="rec-item" key={item?.id} to={"/fooddetail/" + item?.id}>
+        <img src={item?.URL} alt="" />
+        <div className="rec-item-name">{item?.Food_Name}</div>
+        <div className="rec-item-price">{item?.Price.toFixed(2)} ฿</div>
       </Link>
     );
   });
@@ -123,42 +133,4 @@ const promotion_data = [
   },
 ];
 
-const random_data = [
-  {
-    id: 67,
-    image: "/food1.jpg",
-    name: "เครื่องเทศที่ตำน๊านนาน",
-    price: 500,
-  },
-  {
-    id: 2,
-    image: "/food2.jpg",
-    name: "สเต๊กหมูพ่นไฟ",
-    price: 425,
-  },
-  {
-    id: 3,
-    image: "/food3.jpg",
-    name: "เฟรนฟรายแถมแฮมเบอร์เกอร์",
-    price: 300,
-  },
-  {
-    id: 4,
-    image: "/food4.jpg",
-    name: "สเต๊กปลาส้มน้อย",
-    price: 100,
-  },
-  {
-    id: 5,
-    image: "/food5.jpg",
-    name: "เค้กบาร์สลีปปี้",
-    price: 150,
-  },
-  {
-    id: 6,
-    image: "/food1.jpg",
-    name: "เครื่องเทศที่ตำน๊านนาน Version 2",
-    price: 600,
-  },
-];
 export default Home;

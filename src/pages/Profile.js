@@ -27,7 +27,6 @@ const EditProfile = (props) => {
   const [img, setImg] = useState(
     "https://anime.atsit.in/th/wp-content/uploads/2022/07/e0b984e0b88be0b895e0b8b2e0b8a1e0b8b0e0b8aae0b8b2e0b8a1e0b8b2e0b8a3e0b896e0b8abe0b8b2e0b8a2e0b983e0b888e0b983e0b899e0b8ade0b8a7e0b881.webp"
   );
-
   useEffect(() => {
     const {
       data: { publicUrl },
@@ -42,24 +41,42 @@ const EditProfile = (props) => {
   const save = async (event) => {
     event.preventDefault();
     setLoading(true);
-    axios
-      .post("http://localhost:3200/save", {
-        firstname: event.target[0].value,
-        lastname: event.target[1].value,
-        contact: event.target[2].value,
-        img: (await readFileDataAsBase64(event.target[3].files[0])).split(
-          ","
-        )[1],
-        id: user?.id,
-      })
-      .then((res) => {
-        alert("Update profile success");
-        supabase.auth.refreshSession();
-        editCallback();
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    if (event.target[3].files[0] != undefined)
+      axios
+        .post("http://localhost:3200/save", {
+          firstname: event.target[0].value,
+          lastname: event.target[1].value,
+          contact: event.target[2].value,
+          img: (await readFileDataAsBase64(event.target[3].files[0])).split(
+            ","
+          )[1],
+          id: user?.id,
+        })
+        .then((res) => {
+          alert("Update profile success");
+          supabase.auth.refreshSession();
+          editCallback();
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    else
+      axios
+        .post("http://localhost:3200/save", {
+          firstname: event.target[0].value,
+          lastname: event.target[1].value,
+          contact: event.target[2].value,
+          img: "not",
+          id: user?.id,
+        })
+        .then((res) => {
+          alert("Update profile success");
+          supabase.auth.refreshSession();
+          editCallback();
+        })
+        .catch((err) => {
+          alert(err);
+        });
   };
   if (isLoading) {
     return (
@@ -73,11 +90,23 @@ const EditProfile = (props) => {
       <div className="form-box">
         <form onSubmit={save}>
           <label htmlFor="firstname">FirstName</label>
-          <input type="text" name="firstname" defaultValue={user?.user_metadata?.firstname ?? ""} />
+          <input
+            type="text"
+            name="firstname"
+            defaultValue={user?.user_metadata?.firstname ?? ""}
+          />
           <label htmlFor="lastname">Lastname</label>
-          <input type="text" name="lastname" defaultValue={user?.user_metadata?.lastname ?? ""} />
+          <input
+            type="text"
+            name="lastname"
+            defaultValue={user?.user_metadata?.lastname ?? ""}
+          />
           <label htmlFor="contact">Contact Number</label>
-          <input type="text" name="contact"  defaultValue={user?.user_metadata?.contact ?? ""}/>
+          <input
+            type="text"
+            name="contact"
+            defaultValue={user?.user_metadata?.contact ?? ""}
+          />
           <label htmlFor="changepicture">Picture</label>
           <input type="file" name="changepicture" />
           <div className="button">
@@ -124,7 +153,6 @@ const Profile = () => {
   const supabase = useSupabase();
   const [isEdit, setEdit] = useState(false);
   const { user } = useContext(AuthContext);
-  console.log(user);
   const editProfile = () => {
     setEdit(!isEdit);
   };

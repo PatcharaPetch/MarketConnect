@@ -111,6 +111,7 @@ function App() {
         <Route path="/verify" element={<Verify />} />
         <Route element={<GuardedRoute />}>
           <Route path="/addproduct" element={<AddProduct />} />
+          <Route path="/addproduct/:foodid" element={<AddProduct />} />
           <Route path="/support" element={<Support />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/manage" element={<Manage />} />

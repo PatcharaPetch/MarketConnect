@@ -20,6 +20,24 @@ app.post("/register", async (req, res) => {
     email: email,
     password: password,
   });
+  // console.log(data);
+  if (error) {
+    res.status(400).json(error);
+    // } else if (data.user.identities.length === 0) {
+    //   res.status(400).json("Email that been use");
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.post("/sendsupport", async (req, res) => {
+  const { email, message, status, contact } = req.body;
+  const { data, error } = await supabase.from("Support").insert({
+    Sender: email,
+    Status: status,
+    Problem: message,
+    Contact: contact,
+  });
   if (error) {
     res.status(400).json(error);
   } else {
@@ -27,14 +45,50 @@ app.post("/register", async (req, res) => {
   }
 });
 
-app.post("/support", async (req, res) => {
-  const { name, email, contact, message } = req.body;
-  const { data, error } = await supabase.from("support").insert({
-    Name: name,
-    Email: email,
-    Contact_Number: contact,
-    Message: message,
-  });
+app.post("/getsupport", async (req, res) => {
+  const { email } = req.body;
+  console.log(email);
+  const { data, error } = await supabase
+    .from("Support")
+    .select("Problem,Status,id")
+    .eq("Sender", email);
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.post("/adminsupport", async (req, res) => {
+  const { data, error } = await supabase
+    .from("Support")
+    .select("Problem,Status,id,Sender,Contact");
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.post("/changestatus", async (req, res) => {
+  const { status, id } = req.body;
+  const { data, error } = await supabase
+    .from("Support")
+    .update({ Status: status })
+    .eq("id", id);
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
+app.post("/unsendsupport", async (req, res) => {
+  const { id } = req.body;
+  const { data, error } = await supabase
+    .from("Support")
+    .delete()
+    .eq("id", id);
   if (error) {
     res.status(400).json(error);
   } else {
@@ -47,7 +101,7 @@ app.post("/fooddetail", async (req, res) => {
   const { data, error } = await supabase
     .from("Food")
     .select(
-      "Food_Name, Price, Description, URL, User(firstname,lastname,contact), Catagory(catagory_name)"
+      "Food_Name, Price, Description, URL,Line,Catagory_Id, User(firstname,lastname,contact), Catagory(catagory_name)"
     )
     .eq("id", foodid);
   if (error) {
@@ -94,6 +148,17 @@ app.post("/new", async (req, res) => {
   }
 });
 
+app.post("/randomfood", async (req, res) => {
+  const { data, error } = await supabase
+    .from("Food")
+    .select("id, Food_Name, Price, URL");
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
 app.post("/verify", async (req, res) => {
   const { email, token } = req.body;
   const { data, error } = await supabase.auth.verifyOtp({
@@ -118,7 +183,7 @@ app.post("/save", async (req, res) => {
       contact: contact,
     },
   });
-  const { data2, error2 } = await supabase
+  const { error2 } = await supabase
     .from("User")
     .update({
       firstname: firstname,
@@ -126,32 +191,12 @@ app.post("/save", async (req, res) => {
       contact: contact,
     })
     .eq("id_user", id);
-  const { data3, error3 } = await supabase.storage
-    .from("Profile_User")
-    .upload(id + ".png", img, {
+  if (img.byteLength != 2) {
+    await supabase.storage.from("Profile_User").upload(id + ".png", img, {
       contentType: "image/png",
       upsert: true,
     });
-  if (error || error2 || error3) {
-    res.status(400).json(error || error2 || error3);
-  } else {
-    res.status(200).json(data);
   }
-});
-
-app.post("/delete", async (req, res) => {
-  const { user } = req.body;
-  // const shopkeeper = supabase
-  //   .from("Food")
-  //   .select("Shopkeeper_Id,users!inner(Shopkeerer_Id)")
-  //   .eq("User_Info.id", user);
-  const { data, error } = await supabase
-    .from("Food")
-    .delete()
-    .eq("id", "75");
-  const { error2 } = await supabase.storage
-    .from("Picture_Food")
-    .remove("64" + ".png");
   if (error || error2) {
     res.status(400).json(error || error2);
   } else {
@@ -159,8 +204,21 @@ app.post("/delete", async (req, res) => {
   }
 });
 
+app.post("/delete", async (req, res) => {
+  const { food } = req.body;
+  const { data, error } = await supabase
+    .from("Food")
+    .delete()
+    .eq("id", food);
+  if (error) {
+    res.status(400).json(error);
+  } else {
+    res.status(200).json(data);
+  }
+});
+
 app.post("/addproduct", async (req, res) => {
-  const { name, price, catagory_id, id, description, picture } = req.body;
+  const { name, price, catagory_id, id, description, picture, line } = req.body;
   const { data, error } = await supabase.from("Food").insert({
     Food_Name: name,
     Catagory_Id: catagory_id,
@@ -168,6 +226,7 @@ app.post("/addproduct", async (req, res) => {
     Shopkeeper_Id: id,
     Description: description,
     URL: picture,
+    Line: line,
   });
   if (error) {
     res.status(400).json(error);
@@ -177,7 +236,16 @@ app.post("/addproduct", async (req, res) => {
 });
 
 app.post("/manageproduct", async (req, res) => {
-  const { food, name, price, catagory_id, id, description, picture } = req.body;
+  const {
+    food,
+    name,
+    price,
+    catagory_id,
+    id,
+    description,
+    picture,
+    line,
+  } = req.body;
   const { data, error } = await supabase
     .from("Food")
     .update({
@@ -187,6 +255,7 @@ app.post("/manageproduct", async (req, res) => {
       Shopkeeper_Id: id,
       Description: description,
       URL: picture,
+      Line: line,
     })
     .eq("id", food);
   if (error) {

@@ -64,6 +64,9 @@ const FoodDetail = () => {
                 <li>
                   Contact: <p>{food?.User?.contact ?? "-"}</p>
                 </li>
+                <li>
+                  Line: <p>{food?.Line ?? "-"}</p>
+                </li>
               </ul>
             </div>
           </div>

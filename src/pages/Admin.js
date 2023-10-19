@@ -1,38 +1,61 @@
-import React, { useState } from 'react';
-import './Admin.scoped.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./Admin.scoped.css";
 
 function Admin() {
-  const [issues, setIssues] = useState(
-    [
-    {
-      id: 1,
-      email: 'userStupid@example.com',
-      contact: '123-456-7890',
-      problem: 'ปัญหาที่ 1',
-      status: 'Not Finish',
-    },
-    {
-      id: 2,
-      email: 'usereiei@example.com',
-      contact: '987-654-3210',
-      problem: 'ปัญหาที่ 2',
-      status: 'Finish',
-    },
-    {
-      id: 3,
-      email: 'userhuakuy@example.com',
-      contact: '123-456-7890',
-      problem: 'ปัญหาที่ 3',
-      status: 'Not Finish',
-    },
-  ]
-  );
+  const [issues, setIssues] = useState([]);
 
-  const handleStatusChange = (id, newStatus) => {
+  // {
+  //   id: 1,
+  //   email: "userStupid@example.com",
+  //   contact: "123-456-7890",
+  //   problem: "ปัญหาที่ 1",
+  //   status: "Not Finish",
+  // },
+  // {
+  //   id: 2,
+  //   email: "usereiei@example.com",
+  //   contact: "987-654-3210",
+  //   problem: "ปัญหาที่ 2",
+  //   status: "Finish",
+  // },
+  // {
+  //   id: 3,
+  //   email: "userhuakuy@example.com",
+  //   contact: "123-456-7890",
+  //   problem: "ปัญหาที่ 3",
+  //   status: "Not Finish",
+  // },
+  // ]);
+
+  const getdata = () => {
+    axios
+      .post("http://localhost:3200/adminsupport")
+      .then((res) => {
+        setIssues(res.data);
+      })
+      .catch((err) => {
+        alert(err);
+      });
+  };
+  getdata();
+  useEffect(() => {
+    getdata();
+  }, []);
+  const handleStatusChange = (event, id, newStatus) => {
+    event.preventDefault();
     const updatedIssues = issues.map((issue) =>
-      issue.id === id ? { ...issue, status: newStatus } : issue
+      // issue.id === id ? { ...issue, status: newStatus } : issue
+      {
+        if (issue.id === id) {
+          axios.post("http://localhost:3200/changestatus", {
+            status: newStatus,
+            id: id,
+          });
+        }
+      }
     );
-    setIssues(updatedIssues);
+    getdata();
   };
 
   return (
@@ -50,15 +73,17 @@ function Admin() {
         </thead>
         <tbody>
           {issues.map((issue) => (
-            <tr key={issue.id}>
-              <td>{issue.id}</td>
-              <td>{issue.email}</td>
-              <td>{issue.contact}</td>
-              <td>{issue.problem}</td>
+            <tr key={issue?.id}>
+              <td>{issue?.id}</td>
+              <td>{issue?.Sender}</td>
+              <td>{issue?.Contact}</td>
+              <td>{issue?.Problem}</td>
               <td>
                 <select
-                  value={issue.status}
-                  onChange={(e) => handleStatusChange(issue.id, e.target.value)}
+                  value={issue?.Status}
+                  onChange={(e) =>
+                    handleStatusChange(e, issue?.id, e.target.value)
+                  }
                 >
                   <option value="Finish">Finish</option>
                   <option value="Not Finish">Not Finish</option>
