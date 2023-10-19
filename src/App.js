@@ -114,7 +114,6 @@ function App() {
           <Route path="/support" element={<Support />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/manage" element={<Manage />} />
-          <Route path="/chatpage" element={<Chatpage />} />
         </Route>
         <Route element={<GuardedAdmin />}>
           <Route path="/admin" element={<Admin />} />
