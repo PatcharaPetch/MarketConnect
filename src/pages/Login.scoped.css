@@ -106,6 +106,7 @@ button:hover {
   background-color: #7895b2;
   opacity: 0.7;
   transition: 0.5s;
+  transform: scale(1.1); 
 }
 
 @media (max-width: 768px) {

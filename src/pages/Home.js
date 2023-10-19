@@ -28,7 +28,7 @@ const Home = () => {
             <Random />
           </div>
         </section>
-        <PopChat messages={[]} />
+        {/* <PopChat messages={[]} /> */}
       </main>
     </div>
   );

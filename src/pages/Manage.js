@@ -78,7 +78,7 @@ const Manage = () => {
   return (
     <div className="container">
       <NavBar />
-      <PopChat messages={[]} />
+      {/* <PopChat messages={[]} /> */}
       <h1>Manage</h1>
       <div className="add-box">
         <Link to="/addproduct" className="add-product">

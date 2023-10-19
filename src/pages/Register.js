@@ -17,6 +17,7 @@ const Register = () => {
         password: event.target[1].value,
       })
       .then((res) => {
+        console.log(res);
         if (res.status !== 200) {
           alert("Email is already used.");
           console.error(res);

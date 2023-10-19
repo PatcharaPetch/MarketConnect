@@ -107,6 +107,7 @@ button {
 button:hover {
     background-color: #e1d6a3;
     transition: 0.5s;
+    transform: scale(1.1); 
 }
 
 .unsend-button {
@@ -122,6 +123,7 @@ button:hover {
 
 .unsend-button:hover {
   background-color: #cc0000; /* ปรับสีเมื่อนำเมาส์ชี้ไปที่ปุ่ม "Unsend" */
+  transform: scale(1.1); 
 }
 
 

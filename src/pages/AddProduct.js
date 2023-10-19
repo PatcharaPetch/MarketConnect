@@ -81,7 +81,7 @@ const AddProduct = () => {
     return (
       <div className="container">
         <NavBar />
-        <PopChat messages={[]} />
+        {/* <PopChat messages={[]} /> */}
         <h1>Product</h1>
         <form onSubmit={handleAddProduct} className="form-box">
           <label htmlFor="productname">Food Name</label>

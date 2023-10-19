@@ -46,7 +46,7 @@ function Support() {
   return (
     <div className="container">
       <NavBar />
-      <PopChat messages={[]} />
+      {/* <PopChat messages={[]} /> */}
       <div className="support-container">
         <div className="left-container">
           <h2>History of Data transmission</h2>
