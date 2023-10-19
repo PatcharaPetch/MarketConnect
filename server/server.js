@@ -47,7 +47,6 @@ app.post("/sendsupport", async (req, res) => {
 
 app.post("/getsupport", async (req, res) => {
   const { email } = req.body;
-  console.log(email);
   const { data, error } = await supabase
     .from("Support")
     .select("Problem,Status,id")
