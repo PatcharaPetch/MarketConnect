@@ -22,7 +22,7 @@ const GuardedAdmin = () => {
   if (admin === "Y") {
     return <Outlet />;
   } else if (admin === "N") {
-    // console.log("1")
+    console.log("1")
     alert("You don't have permission to access this page");
     return <Navigate to="/home" />;
   } else {
